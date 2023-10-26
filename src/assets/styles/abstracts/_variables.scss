@@ -15,6 +15,9 @@
 
   // Text
   --primary-text-color: #081E3B;
+
+  // Background colors
+  --background-color: #F8F8F8;
 }
 
 .App.dark {
@@ -25,6 +28,9 @@
   --shadow-sm-color: rgba(150, 150, 150, .1);
   --shadow-md-color: rgba(150, 150, 150, .2);
   --shadow-lg-color: rgba(150, 150, 150, .3);
+
+  // Background colors
+  --background-color: #121212;
 }
 
 // --primary-darker: #070F3A;

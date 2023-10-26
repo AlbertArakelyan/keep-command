@@ -1,0 +1,1 @@
+export type ThemeType = 'dark' | 'light'; // TODO change with enum
