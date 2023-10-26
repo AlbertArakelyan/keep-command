@@ -1,0 +1,36 @@
+:root {
+  // Main colors
+  --primary: #313C74;
+  --primary-dark: #182257;
+  --primary-light: #525C91;
+
+  // Entiry colors
+  --danger: #E11717;
+  --danger-dark: #CB1D1D;
+
+  // Shadow colors
+  --shadow-sm-color: rgba(0, 0, 0, 0.1);
+  --shadow-md-color: rgba(0, 0, 0, 0.2);
+  --shadow-lg-color: rgba(0, 0, 0, 0.3);
+
+  // Text
+  --primary-text-color: #081E3B;
+}
+
+.App.dark {
+  // Text
+  --primary-text-color: #F0F0F0;
+
+  // Shadow colors
+  --shadow-sm-color: rgba(150, 150, 150, .1);
+  --shadow-md-color: rgba(150, 150, 150, .2);
+  --shadow-lg-color: rgba(150, 150, 150, .3);
+}
+
+// --primary-darker: #070F3A;
+// --primary-lighter: #7C84AE;
+
+
+// --primary: #313C74;
+// --primary-dark: #182257;
+// --primary-light: #525C91;
