@@ -1,8 +1,16 @@
 import Auth from './Auth';
 
+import useAuthContainer from './useAuthContainer';
+
 const AuthContainer = () => {
+  const {
+    isSignUp
+  } = useAuthContainer();
+
   return (
-    <Auth />
+    <Auth
+      isSignUp={isSignUp}
+    />
   );
 };
 

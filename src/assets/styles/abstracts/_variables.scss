@@ -3,10 +3,12 @@
   --primary: #313C74;
   --primary-dark: #182257;
   --primary-light: #525C91;
+  --primary-alpha: rgba(49, 60, 116, .6);
 
   // Entiry colors
   --danger: #E11717;
   --danger-dark: #CB1D1D;
+  --danger-alpha: rgba(225, 23, 23, .6);
 
   // Shadow colors
   --shadow-sm-color: rgba(0, 0, 0, 0.1);
@@ -18,6 +20,18 @@
 
   // Background colors
   --background-color: #F8F8F8;
+
+  // Border colors
+  --auth-container-border-color: var(--primary);
+  --input-border-color: #A2ACC0;
+  --input-border-focus-color: #1665D8;
+
+  // Natural colors
+  --white: #FFFFFF;
+
+  // Natural colors (swap)
+  --white-swap: #FFFFFF;
+  --black-swap: #000000;
 }
 
 .App.dark {
@@ -31,6 +45,14 @@
 
   // Background colors
   --background-color: #121212;
+
+  // Border colors
+  --input-border-color: #F0F0F0;
+  --input-border-focus-color: #478dfe;
+
+  // Natural colors (swap)
+  --white-swap: #000000;
+  --black-swap: #FFFFFF;
 }
 
 // --primary-darker: #070F3A;

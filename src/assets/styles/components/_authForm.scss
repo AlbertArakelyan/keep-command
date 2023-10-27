@@ -1,0 +1,40 @@
+.auth-form {
+  @include flex(column, center, flex-start);
+}
+.auth-form__title {
+  margin-bottom: 1rem;
+  @include font(2rem, 500, var(--primary-text-color));
+}
+.auth-form__inputs {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.auth-form__inputs {
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+.auth-from__controls {
+  width: 100%;
+  @include flex(column, flex-start, flex-start);
+}
+.auth-from__controls-main {
+  @include flex(row, center, flex-start);
+}
+.auth-form__btn {
+  margin-right: 1rem;
+}
+.auth-form__link {
+  text-decoration: underline;
+  color: var(--primary-text-color);
+  @include font(1rem, 500, var(--primary-text-color));
+  
+
+  &--small {
+    font-size: 0.875rem;
+  }
+}
+.auth-from__forgot {
+  margin-top: 1.25rem;
+  @include font(1rem, 500, var(--primary-text-color));
+}
