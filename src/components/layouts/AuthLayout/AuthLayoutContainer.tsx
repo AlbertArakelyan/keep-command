@@ -1,9 +1,7 @@
 import AuthLayout from './AuthLayout';
 
 const AuthLayoutContainer = () => {
-  return (
-    <AuthLayout />
-  );
+  return <AuthLayout />;
 };
 
 export default AuthLayoutContainer;

@@ -1,12 +1,15 @@
+import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Auth } from 'pages';
 
 import { AuthLayout, BaseLayout } from 'components';
 
-const App = () => {
+import { IAppProps } from './types';
+
+const App: FC<IAppProps> = ({ theme }) => {
   return (
-    <div className={`App`}>
+    <div className={`App ${theme}`}>
       <Routes>
         <Route element={<BaseLayout />}>
           <Route path="/" element={<div>main page</div>} />

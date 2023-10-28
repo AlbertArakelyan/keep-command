@@ -1,0 +1,10 @@
+html, body {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+}
+
+.App {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  min-height: 100vh;
+}

@@ -1,9 +1,7 @@
 import BaseLayout from './BaseLayout';
 
 const BaseLayoutContainer = () => {
-  return (
-    <BaseLayout />
-  );
+  return <BaseLayout />;
 };
 
 export default BaseLayout;
