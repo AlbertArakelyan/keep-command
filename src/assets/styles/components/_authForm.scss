@@ -9,6 +9,10 @@
   width: 100%;
   margin-bottom: 1rem;
 }
+.auth-from__verification-message {
+  margin-bottom: .75rem;
+  @include font(1rem, 400, var(--primary-text-color), center);
+}
 .auth-form__inputs {
   &:not(:last-child) {
     margin-bottom: 1.5rem;

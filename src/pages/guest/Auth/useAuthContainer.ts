@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'hooks';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAppDispatch, useAppSelector } from 'store/index';
+
+import { signUp, login, resetIsVerificationEmailSent } from 'store/auth';
 
 import { signInSchema, signUpSchema } from 'utils';
 
@@ -11,9 +14,12 @@ import { IUserSignInData, IUserSignUpData } from 'types';
 
 const useAuthContainer = () => {
   const query = useQuery();
+  const dispatch = useAppDispatch();
 
-  const authmode = query.get(AuthQueries.authmode);
-  const isSignUp = authmode === AuthModes.signup;
+  const { isLoading, isVerificationEmailSent } = useAppSelector((state) => state.auth);
+
+  const authMode = query.get(AuthQueries.authmode);
+  const isSignUp = authMode === AuthModes.signup;
 
   const {
     register,
@@ -30,8 +36,10 @@ const useAuthContainer = () => {
   const handleFormSubmit = (data: IUserSignInData | IUserSignUpData) => {
     if (isSignUp) {
       const sendData = data as IUserSignUpData;
+      dispatch(signUp(sendData));
     } else {
       const sendData = data as IUserSignInData;
+      dispatch(login(sendData));
     }
   };
 
@@ -42,6 +50,12 @@ const useAuthContainer = () => {
     }
   }, [isSignUp]);
 
+  useEffect(() => {
+    if (!isSignUp) {
+      dispatch(resetIsVerificationEmailSent());
+    }
+  }, [isSignUp]);
+
   return {
     isSignUp,
     register,
@@ -49,6 +63,8 @@ const useAuthContainer = () => {
     handleFormSubmit,
     errors,
     values,
+    isLoading,
+    isVerificationEmailSent,
   };
 };
 
