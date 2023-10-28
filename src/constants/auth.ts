@@ -4,5 +4,5 @@ export enum AuthModes {
 }
 
 export enum AuthQueries {
-  authmode = 'authmode'
+  authmode = 'authmode',
 }

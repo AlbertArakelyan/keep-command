@@ -9,11 +9,7 @@ import {
 } from 'constants/validation';
 
 const signInSchema = yup.object({
-  email: yup
-    .string()
-    .email()
-    .max(validationLength.base, maxLengthMessage.base)
-    .required(requiredMessage),
+  email: yup.string().email().max(validationLength.base, maxLengthMessage.base).required(requiredMessage),
   password: yup
     .string()
     .min(minValidationLength.base, minLengthMessage.base)

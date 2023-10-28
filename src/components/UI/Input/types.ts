@@ -5,4 +5,5 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string;
   label?: string;
   error?: string;
+  isDirty?: boolean;
 }

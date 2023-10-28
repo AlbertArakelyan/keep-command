@@ -18,12 +18,14 @@
   background-color: var(--background-color);
   text-align: left;
   transition: color .2s ease-in-out,padding .2s ease-in-out,transform .2s ease-in-out;
+  pointer-events: none; // Preventing not ability of focusing while cursor is on label
 
   &--not-empty {
     transform: translateY(-1.7rem) translateX(-0.25rem) scale(.8);
     padding: 0 .5rem;
   }
 }
+
 .base-input {
   @include border(all, var(--input-border-color));
   border-radius: 0.206rem;
@@ -52,7 +54,25 @@
     }
   }
 
-  &--error {
-    
+  &--dirty {
+    & + .base-input__label {
+      transform: translateY(-1.7rem) translateX(-0.25rem) scale(.8);
+      padding: 0 .5rem;
+    }
   }
+
+  &--error {
+    border-color: var(--danger) !important;
+
+    & + .base-input__label {
+      color: var(--danger) !important;
+    }
+  }
+}
+
+.base-input__error-message {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  @include font(.75rem, 400, var(--danger));
 }
