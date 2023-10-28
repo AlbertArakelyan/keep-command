@@ -7,7 +7,16 @@ import { Input, Button } from 'components';
 import { IAuthProps } from './types';
 import { IUserSignUpData } from 'types';
 
-const Auth: FC<IAuthProps> = ({ isSignUp, register, handleSubmit, handleFormSubmit, errors, values }) => {
+const Auth: FC<IAuthProps> = ({
+  isSignUp,
+  register,
+  handleSubmit,
+  handleFormSubmit,
+  errors,
+  values,
+  isLoading,
+  isVerificationEmailSent,
+}) => {
   return (
     <form className="auth-form" onSubmit={handleSubmit(handleFormSubmit)}>
       <h2 className="auth-form__title">Sign {isSignUp ? 'Up' : 'In'}</h2>
@@ -31,6 +40,7 @@ const Auth: FC<IAuthProps> = ({ isSignUp, register, handleSubmit, handleFormSubm
         <Input
           wrapperClassName="auth-form__inputs"
           label="Password"
+          type="password"
           isDirty={!!values.password}
           error={errors.password?.message}
           {...register('password')}
@@ -39,15 +49,21 @@ const Auth: FC<IAuthProps> = ({ isSignUp, register, handleSubmit, handleFormSubm
           <Input
             wrapperClassName="auth-form__inputs"
             label="Confirm Password"
+            type="password"
             isDirty={!!(values as IUserSignUpData).confirmPassword}
             error={(errors as FieldErrors<IUserSignUpData>).confirmPassword?.message}
             {...register('confirmPassword')}
           />
         )}
       </div>
+      {isVerificationEmailSent && (
+        <span className="auth-from__verification-message">
+          Verification email has been sent, please check your email.
+        </span>
+      )}
       <div className="auth-from__controls">
         <div className="auth-from__controls-main">
-          <Button className="auth-form__btn" btnColor="primary">
+          <Button className="auth-form__btn" btnColor="primary" isLoading={isLoading}>
             Sign {isSignUp ? 'Up' : 'In'}
           </Button>
           <Link className="auth-form__link" to={`?authmode=${isSignUp ? 'signin' : 'signup'}`}>
