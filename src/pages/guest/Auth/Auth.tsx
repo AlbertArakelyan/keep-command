@@ -25,6 +25,7 @@ const Auth: FC<IAuthProps> = ({
           <Input
             wrapperClassName="auth-form__inputs"
             label="Name"
+            type="text"
             isDirty={!!(values as IUserSignUpData).name}
             error={(errors as FieldErrors<IUserSignUpData>).name?.message}
             {...register('name')}
@@ -33,6 +34,7 @@ const Auth: FC<IAuthProps> = ({
         <Input
           wrapperClassName="auth-form__inputs"
           label="Email"
+          type="email"
           isDirty={!!values.email}
           error={errors.email?.message}
           {...register('email')}
