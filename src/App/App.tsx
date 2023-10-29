@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { Auth } from 'pages';
+import { Auth, Home } from 'pages';
 
 import { AuthLayout, BaseLayout } from 'components';
 
@@ -13,7 +13,7 @@ const App: FC<IAppProps> = ({ theme }) => {
     <div className={`App ${theme}`}>
       <Routes>
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<div>main page</div>} />
+          <Route path="/" element={<Home />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/auth" element={<Auth />} />
