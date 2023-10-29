@@ -13,8 +13,10 @@ const Input: FC<IInputProps> = forwardRef(
           // eslint-disable-next-line
           // @ts-ignore
           ref={ref}
-          aria-labelledby="name-label"
-          aria-label="Name" // TODO take from props
+          aria-labelledby={`${props.name}-label`}
+          aria-label={props.name}
+          aria-invalid={!!error}
+          aria-describedby={`${props.name}-hint`}
           {...props}
         />
         {label && (
@@ -22,12 +24,16 @@ const Input: FC<IInputProps> = forwardRef(
             className={`base-input__label ${labelClassName} ${
               props.value?.toString().length ? 'base-input__label--not-empty' : ''
             }`}
-            id="name-label"
+            id={`${props.name}-label`}
           >
             {label}
           </span>
         )}
-        {error && <span className="base-input__error-message">{error}</span>}
+        {error && (
+          <span className="base-input__error-message" id={`${props.name}-hint`}>
+            {error}
+          </span>
+        )}
       </div>
     );
   }

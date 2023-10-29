@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { Loader } from 'components';
+
 import { IButtonProps } from './types';
 
 const Button: FC<IButtonProps> = ({
@@ -18,11 +20,10 @@ const Button: FC<IButtonProps> = ({
       } ${className}`}
       tabIndex={isLoading || disabled ? -1 : 0}
       disabled={disabled || isLoading}
-      aria-disabled={isLoading || disabled} // Or props.disabled
       {...props}
     >
       <div className={`base-button__content`}>{children}</div>
-      <span className="base-button__loader">L...</span>
+      {isLoading && <Loader className="base-button__loader" size="small" />}
     </button>
   );
 };

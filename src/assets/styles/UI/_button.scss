@@ -56,9 +56,6 @@
     .base-button__content {
       opacity: 0;
     }
-    .base-button__loader {
-      display: inline-block;
-    }
   }
 }
 .base-button__content {
@@ -66,5 +63,4 @@
 }
 .base-button__loader {
   position: absolute;
-  display: none;
 }
