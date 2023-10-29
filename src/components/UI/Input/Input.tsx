@@ -14,7 +14,6 @@ const Input: FC<IInputProps> = forwardRef(
           // @ts-ignore
           ref={ref}
           aria-labelledby={`${props.name}-label`}
-          aria-label={props.name}
           aria-invalid={!!error}
           aria-describedby={`${props.name}-hint`}
           {...props}
