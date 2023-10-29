@@ -15,10 +15,6 @@ import { authErrors } from 'constants/authErrors';
 
 export const updateAuthState = createAsyncThunk<IUpdateAuthStateReturnData>(UPDATE_AUTH_STATE, () => {
   const user = AuthService.authUser();
-  console.log({
-    id: user?.uid,
-    isAuth: !!user,
-  });
 
   return {
     id: user?.uid,
@@ -64,7 +60,7 @@ export const login = createAsyncThunk<void, ILoginPayloadData>(LOGIN, async (dat
 
     await dispatch(updateAuthState());
   } catch (error: any) {
-    console.log('login');
+    console.log('login', error.toString());
     toast.error(getFirebaseError(error.toString(), authErrors), {
       type: 'error',
       hideProgressBar: true,
