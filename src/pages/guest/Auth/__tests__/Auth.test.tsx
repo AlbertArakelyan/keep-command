@@ -56,7 +56,7 @@ describe('Auth', () => {
     );
 
     const authFormElement = container.querySelector('.auth-form');
-    
+
     expect(authFormElement).toBeInTheDocument();
   });
 

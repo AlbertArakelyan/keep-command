@@ -5,7 +5,11 @@ import AuthLayout from '../AuthLayout';
 
 describe('AuthLayout', () => {
   it('should render', () => {
-    const { container } = render(<MemoryRouter><AuthLayout /></MemoryRouter>);
+    const { container } = render(
+      <MemoryRouter>
+        <AuthLayout />
+      </MemoryRouter>
+    );
     const authLayoutComponent = container.querySelector('.auth-layout');
     expect(authLayoutComponent).toBeInTheDocument();
   });
