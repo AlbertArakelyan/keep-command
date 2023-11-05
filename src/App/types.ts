@@ -1,5 +1,3 @@
-import { ThemeType } from 'types';
+import { UseAppContainerType } from './useAppContainer';
 
-export interface IAppProps {
-  theme: ThemeType;
-}
+export type IAppProps = UseAppContainerType;

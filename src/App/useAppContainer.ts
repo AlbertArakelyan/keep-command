@@ -14,6 +14,7 @@ const useAppContainer = () => {
   const dispatch = useAppDispatch();
 
   const { theme } = useAppSelector((state) => state.ui);
+  const { isAuth } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     const preferredTheme = getPreferredTheme();
@@ -35,7 +36,10 @@ const useAppContainer = () => {
 
   return {
     theme,
+    isAuth,
   };
 };
+
+export type UseAppContainerType = ReturnType<typeof useAppContainer>;
 
 export default useAppContainer;

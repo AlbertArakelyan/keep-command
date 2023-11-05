@@ -2,11 +2,13 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { updateAuthState, signUp, login, resetIsVerificationEmailSent } from './auth.actions';
 
+import { AuthService } from 'services';
+
 import { IAuthState } from './types';
 
 const initialState: IAuthState = {
-  id: undefined,
-  isAuth: false,
+  id: AuthService.authUser()?.uid,
+  isAuth: AuthService.isAuth(),
   isVerificationEmailSent: false,
   isLoading: false,
   error: null,
