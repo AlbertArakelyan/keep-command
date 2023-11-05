@@ -18,7 +18,7 @@ export const updateAuthState = createAsyncThunk<IUpdateAuthStateReturnData>(UPDA
 
   return {
     id: user?.uid,
-    isAuth: !!user,
+    isAuth: !!user && user.emailVerified,
   };
 });
 
@@ -53,6 +53,7 @@ export const login = createAsyncThunk<void, ILoginPayloadData>(LOGIN, async (dat
     const response = await AuthService.login(data.email, data.password);
 
     if (!response.user.emailVerified) {
+      // TODO move message to a constant
       throw new Error('Email is not verified');
     }
 
