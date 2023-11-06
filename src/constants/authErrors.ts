@@ -15,3 +15,5 @@ export const authErrors: Record<string, string> = {
   'auth/user-not-found': 'There is no user record corresponding to this identifier. The user may have been deleted.',
   'auth/weak-password': 'The password must be 6 characters long or more.',
 };
+
+export const emailNotVerified = 'Email is not verified';
