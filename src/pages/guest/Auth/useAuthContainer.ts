@@ -4,7 +4,13 @@ import { useQuery } from 'hooks';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch, useAppSelector } from 'store/index';
 
-import { signUp, login, resetIsVerificationEmailSent } from 'store/auth';
+import {
+  signUp,
+  login,
+  resetIsVerificationEmailSent,
+  selectIsLoading,
+  selectIsVerificationEmailSent,
+} from 'store/auth';
 
 import { signInSchema, signUpSchema } from 'utils';
 
@@ -16,7 +22,8 @@ const useAuthContainer = () => {
   const query = useQuery();
   const dispatch = useAppDispatch();
 
-  const { isLoading, isVerificationEmailSent } = useAppSelector((state) => state.auth);
+  const isLoading = useAppSelector(selectIsLoading);
+  const isVerificationEmailSent = useAppSelector(selectIsVerificationEmailSent);
 
   const authMode = query.get(AuthQueries.authmode);
   const isSignUp = authMode === AuthModes.signup;
