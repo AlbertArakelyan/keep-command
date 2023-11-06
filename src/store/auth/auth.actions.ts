@@ -11,7 +11,7 @@ import { AuthService } from 'services';
 
 import { getFirebaseError } from 'helpers';
 
-import { authErrors } from 'constants/authErrors';
+import { authErrors, emailNotVerified } from 'constants/authErrors';
 
 export const updateAuthState = createAsyncThunk<IUpdateAuthStateReturnData>(UPDATE_AUTH_STATE, () => {
   const user = AuthService.authUser();
@@ -53,8 +53,7 @@ export const login = createAsyncThunk<void, ILoginPayloadData>(LOGIN, async (dat
     const response = await AuthService.login(data.email, data.password);
 
     if (!response.user.emailVerified) {
-      // TODO move message to a constant
-      throw new Error('Email is not verified');
+      throw new Error(emailNotVerified);
     }
 
     dispatch(getUser(response.user.uid));
