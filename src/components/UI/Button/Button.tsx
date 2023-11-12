@@ -5,7 +5,7 @@ import { Loader } from 'components';
 import { IButtonProps } from './types';
 
 const Button: FC<IButtonProps> = ({
-  className,
+  className = '',
   btnColor = 'primary',
   variant = 'default',
   isLoading,

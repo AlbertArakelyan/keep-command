@@ -17,9 +17,16 @@
 
   // Text
   --primary-text-color: #081E3B;
+  --secondary-text-color: #9fa9be;
 
   // Background colors
   --background-color: #F8F8F8;
+  --header-footer-aside-background-color: #ffffff;
+  --white-background-hover: rgba(0, 0, 0, .03);
+  --white-background-active: rgba(0, 0, 0, .045);
+  --white-background-highlited: rgba(0, 0, 0, .055);
+  --white-background-highlited-hover: rgba(0, 0, 0, .065);
+  --white-background-highlited-active: rgba(0, 0, 0, .08);
 
   // Border colors
   --auth-container-border-color: var(--primary);
@@ -28,6 +35,8 @@
 
   // Natural colors
   --white: #FFFFFF;
+  --gray: #c8c8c8;
+  --gray-100: #c8c8c819;
 
   // Natural colors (swap)
   --white-swap: #FFFFFF;
@@ -37,6 +46,7 @@
 .App.dark {
   // Text
   --primary-text-color: #F0F0F0;
+  --secondary-text-color: #bebebe;
 
   // Shadow colors
   --shadow-sm-color: rgba(150, 150, 150, .1);
@@ -45,10 +55,20 @@
 
   // Background colors
   --background-color: #121212;
+  --header-footer-aside-background-color: #202020;
+  --white-background-hover: rgba(255, 255, 255, .03);
+  --white-background-active: rgba(255, 255, 255, .045);
+  --white-background-highlited: rgba(255, 255, 255, .055);
+  --white-background-highlited-hover: rgba(255, 255, 255, .065);
+  --white-background-highlited-active: rgba(255, 255, 255, .08);
 
   // Border colors
   --input-border-color: #F0F0F0;
   --input-border-focus-color: #478dfe;
+
+  // Natural colors
+  --gray: #767676;
+  --gray-100: #76767619;
 
   // Natural colors (swap)
   --white-swap: #000000;

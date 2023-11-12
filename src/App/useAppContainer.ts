@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'store/index';
 
-import { changeTheme } from 'store/ui';
-import { updateAuthState } from 'store/auth';
+import { changeTheme, selectTheme } from 'store/ui';
+import { updateAuthState, selectIsAuth } from 'store/auth';
 
 import { AuthService } from 'services';
 
@@ -13,8 +13,8 @@ const useAppContainer = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { theme } = useAppSelector((state) => state.ui);
-  const { isAuth } = useAppSelector((state) => state.auth);
+  const theme = useAppSelector(selectTheme);
+  const isAuth = useAppSelector(selectIsAuth);
 
   useEffect(() => {
     const preferredTheme = getPreferredTheme();
