@@ -25,7 +25,7 @@ describe('BaseLayout', () => {
     const headerElement = container.querySelector('header');
     const asideElement = container.querySelector('aside');
     const mainElement = container.querySelector('main');
-    
+
     expect(headerElement).toBeInTheDocument();
     expect(asideElement).toBeInTheDocument();
     expect(mainElement).toBeInTheDocument();

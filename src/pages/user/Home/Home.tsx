@@ -1,10 +1,7 @@
-import { Loader } from 'components';
-
 const Home = () => {
   return (
     <div>
-      <h1>Homery</h1>
-      <Loader />
+      <h1>Home page</h1>
     </div>
   );
 };
