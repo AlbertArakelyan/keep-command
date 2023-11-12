@@ -3,6 +3,7 @@
 
 // Abstracts
 @import "./abstracts/variables";
+@import "./abstracts/sassVariables";
 @import "./abstracts/mixins";
 
 // Components
@@ -10,10 +11,11 @@
 
 // Shared
 @import "./shared/loader";
+@import "./shared/avatar";
 
 // UI
 @import "./UI/input";
 @import "./UI/button";
 
-// Main
+// Base
 @import "./main";

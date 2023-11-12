@@ -1,0 +1,13 @@
+@import "../../../../../assets/styles/abstracts/mixins";
+
+.header {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  width: calc(100% - 11.25rem);
+  height: 5.625rem;
+  padding: 0 2rem;
+  box-shadow: 0 0 5px var(--shadow-sm-color);
+  background-color: var(--header-footer-aside-background-color);
+  @include flex(row, center, space-between);
+}

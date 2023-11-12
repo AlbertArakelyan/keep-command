@@ -1,0 +1,43 @@
+@import "../../../../../../../../../assets/styles/abstracts/mixins";
+
+.nav-bar__link-wrapper {
+  width: 100%;
+}
+.nav-bar__link {
+  @include flex(row, center, flex-start);
+  padding: 1rem;
+  color: var(--primary-text-color);
+  transition: background-color .2s ease;
+
+  &:hover {
+    background-color: var(--white-background-hover);
+  }
+
+  &:active {
+    background-color: var(--white-background-active);
+  }
+
+  &--active {
+    background-color: var(--white-background-highlited);
+
+    &:hover {
+      background-color: var(--white-background-highlited-hover);
+    }
+  
+    &:active {
+      background-color: var(--white-background-highlited-active);
+    }
+
+    .nav-bar__link-label {
+      font-weight: 500;
+    }
+  }
+}
+.nav-bar__link-icon-wrapper {
+  margin-right: .75rem;
+}
+.nav-bar__link-icon {
+  fill: var(--primary-text-color);
+  width: 1.125rem;
+  height: 1.125rem;
+}

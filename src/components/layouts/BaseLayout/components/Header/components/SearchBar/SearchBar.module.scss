@@ -1,0 +1,30 @@
+@import "../../../../../../../assets/styles/abstracts/mixins";
+
+.search-bar {
+  @include flex(row, center, flex-start);
+  max-width: 22rem;
+  width: 100%;
+}
+.search-bar__icon-wrapper {
+  margin-right: 1rem;
+}
+.search-bar__icon {
+  fill: var(--secondary-text-color);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.search-bar__input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 0.2rem 2rem 0.2rem 0;
+  border-bottom: 0.063rem solid transparent;
+  color: var(--secondary-text-color);
+  @include font(1rem, 400, var(--secondary-text-color));
+  transition: border-bottom-color .2s ease;
+
+  &:focus {
+    border-bottom-color: var(--secondary-text-color);
+  }
+}

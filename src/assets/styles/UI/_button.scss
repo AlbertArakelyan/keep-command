@@ -57,6 +57,15 @@
       opacity: 0;
     }
   }
+
+  &--rounded {
+    padding: 0.7rem 0.9rem;
+    border-radius: 1.5rem;
+  }
+
+  &--circle {
+    border-radius: 50%;
+  }
 }
 .base-button__content {
   transition: opacity .2s ease;

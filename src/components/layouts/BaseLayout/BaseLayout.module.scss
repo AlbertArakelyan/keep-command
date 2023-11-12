@@ -1,0 +1,13 @@
+.base-layout {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main {
+  position: relative;
+  min-height: calc(100dvh - 5.625rem);
+  width: 1%;
+  flex: 1 1;
+  padding: 2rem;
+  margin-top: 5.625rem;
+}
