@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { ISelectProps } from './types';
 
 const Select: FC<ISelectProps> = ({
-  wrapperClassName,
-  className,
-  optionsListClassName,
+  wrapperClassName = '',
+  className = '',
+  optionsListClassName = '',
   selectedOptionContent,
   isOpen,
   handleKeyDown,
@@ -15,9 +15,15 @@ const Select: FC<ISelectProps> = ({
   children,
 }) => {
   return (
-    <div className="base-select-wrapper" role="combobox" aria-expanded={isOpen} tabIndex={0} onKeyDown={handleKeyDown}>
+    <div
+      className={`base-select-wrapper ${wrapperClassName}`}
+      role="combobox"
+      aria-expanded={isOpen}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       <button
-        className="base-select"
+        className={`base-select ${className}`}
         onClick={handleToggle}
         aria-haspopup="listbox"
         aria-controls="options"
@@ -32,7 +38,7 @@ const Select: FC<ISelectProps> = ({
       <div
         ref={dropdownRef}
         id="options"
-        className={`base-select__options ${!isOpen ? 'base-select__options--hidden' : ''}`}
+        className={`base-select__options ${!isOpen ? 'base-select__options--hidden' : ''} ${optionsListClassName}`}
         role="listbox"
         aria-labelledby="select"
       >
