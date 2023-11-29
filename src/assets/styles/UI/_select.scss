@@ -1,0 +1,94 @@
+.base-select-wrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  @include flex(row, center, flex-start);
+}
+
+.base-select {
+  @include border(all, var(--input-border-color));
+  @include flex(row, center, flex-start);
+  border-radius: 0.206rem;
+  box-shadow: 0 0 0.125rem var(--shadow-md-color);
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  height: 3.313rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--primary-text-color);
+  cursor: pointer;
+  text-align: left;
+}
+
+.base-select__label {
+  position: absolute;
+  z-index: 1;
+  user-select: none;
+  line-height: 1.125rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--input-border-color);
+  background-color: var(--background-color);
+  text-align: left;
+  transition: color .2s ease-in-out,padding .2s ease-in-out,transform .2s ease-in-out;
+  pointer-events: none; // Preventing not ability of focusing while cursor is on label
+
+  &--not-empty {
+    transform: translateY(-1.7rem) translateX(-0.25rem) scale(.8);
+    padding: 0 .5rem;
+  }
+}
+
+.base-select__value {
+  @include flex(row, center, flex-start);
+  pointer-events: none;
+}
+
+.base-select__options {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 1;
+  width: 100%;
+  padding: 0.5rem 0;
+  max-height: 14.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include border(all, var(--input-border-color));
+  border-top: none;
+  border-bottom-left-radius: 0.206rem;
+  border-bottom-right-radius: 0.206rem;
+  transition: opacity .2s ease, visibility .2s ease;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// Option
+.base-option {
+  @include flex(row, center, flex-start);
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+  transition: background-color .2s ease;
+  color: var(--primary-text-color);
+  cursor: pointer;
+
+  &:hover, &--highlighted {
+    &:not(.base-option--selected) {
+      background-color: var(--white-background-hover);
+    }
+  }
+
+  &--selected {
+    background-color: var(--white-background-highlited);
+  }
+}
+
