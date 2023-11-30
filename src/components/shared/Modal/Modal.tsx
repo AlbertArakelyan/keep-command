@@ -7,6 +7,7 @@ import { IModalProps } from './types';
 const Modal: FC<IModalProps> = ({ title, children }) => {
   return (
     <div>
+      {/* TODO: The upper div will become a portal root */}
       <div className="modal-overlay">
         <div className="modal-content-wrapper" role="dialog" aria-label="Add Command">
           <div className="modal-content">
