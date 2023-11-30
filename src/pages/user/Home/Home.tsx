@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Select, Option } from 'components';
+import { Select, Option, Modal } from 'components';
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -21,6 +21,8 @@ const Home = () => {
         <Option value="Option2">Option22</Option>
         <Option value="Option3">Option33</Option>
       </Select>
+      <hr />
+      <Modal title="Add Command">Modalnery</Modal>
     </div>
   );
 };
