@@ -5,6 +5,7 @@
   inset: 0;
   background-color: $modal-overlay-bg-color;
   overflow-y: auto;
+  animation: modal-overlay-animation .2s ease 1 forwards;
 }
 
 .modal-content-wrapper {
@@ -25,6 +26,7 @@
   z-index: $modal-z-index;
   background-color: var(--card-color);
   box-shadow: 0 0 5px var(--shadow-md-color);
+  animation: modal-content-animation .2s ease 1 forwards;
 }
 
 .modal-header {
@@ -59,4 +61,24 @@
 .modal-header__close-icon {
   width: 1.75rem;
   height: 1.75rem;
+}
+
+@keyframes modal-overlay-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-content-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
