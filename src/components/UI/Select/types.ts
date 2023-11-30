@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, HTMLAttributes } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import { UseSelectContainerType } from './useSelectContainer';
 
