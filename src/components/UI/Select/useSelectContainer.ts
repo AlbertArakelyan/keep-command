@@ -2,9 +2,9 @@ import { useState, useRef, useEffect, KeyboardEvent } from 'react';
 
 const useSelectContainer = (onChange: (option: string) => void) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [highlightedIndex, setHighlightedIndex] = useState(0);
-  const dropdownRef = useRef<HTMLUListElement>(null);
-  const selectedOptionRef = useRef<HTMLDivElement>(null);
+  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const selectedOptionRef = useRef<HTMLButtonElement>(null);
 
   const handleSelect = (option: string) => {
     onChange(option);
@@ -21,10 +21,12 @@ const useSelectContainer = (onChange: (option: string) => void) => {
       handleToggle();
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setHighlightedIndex((prevHighlightedIndex) => Math.max(0, prevHighlightedIndex - 1));
+      setHighlightedIndex((prevHighlightedIndex) =>
+        prevHighlightedIndex === null ? 0 : Math.max(0, prevHighlightedIndex - 1)
+      );
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setHighlightedIndex((prevHighlightedIndex) => prevHighlightedIndex + 1);
+      setHighlightedIndex((prevHighlightedIndex) => (prevHighlightedIndex === null ? 0 : prevHighlightedIndex + 1));
       // TODO accept options.length as argument
       // setHighlightedIndex((prevIndex) => Math.min(options.length - 1, prevIndex + 1));
     } else if (e.key === 'Escape') {
@@ -43,6 +45,12 @@ const useSelectContainer = (onChange: (option: string) => void) => {
   };
 
   useEffect(() => {
+    if (!isOpen) {
+      setHighlightedIndex(null);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -51,6 +59,7 @@ const useSelectContainer = (onChange: (option: string) => void) => {
 
   return {
     highlightedIndex,
+    setHighlightedIndex,
     handleKeyDown,
     isOpen,
     handleSelect,
@@ -60,6 +69,9 @@ const useSelectContainer = (onChange: (option: string) => void) => {
   };
 };
 
-export type UseSelectContainerType = Omit<ReturnType<typeof useSelectContainer>, 'handleSelect' | 'highlightedIndex'>;
+export type UseSelectContainerType = Omit<
+  ReturnType<typeof useSelectContainer>,
+  'handleSelect' | 'highlightedIndex' | 'setHighlightedIndex'
+>;
 
 export default useSelectContainer;

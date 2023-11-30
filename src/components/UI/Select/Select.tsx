@@ -1,9 +1,14 @@
 import { FC } from 'react';
 
+import { Icon } from 'components';
+
 import { ISelectProps } from './types';
 
 const Select: FC<ISelectProps> = ({
-  selectedOption,
+  wrapperClassName = '',
+  className = '',
+  optionsListClassName = '',
+  selectedOptionContent,
   isOpen,
   handleKeyDown,
   handleToggle,
@@ -12,22 +17,38 @@ const Select: FC<ISelectProps> = ({
   children,
 }) => {
   return (
-    <div className="custom-select" role="combobox" aria-expanded={isOpen} tabIndex={0} onKeyDown={handleKeyDown}>
-      <div
-        className="selected-option"
+    <div
+      className={`base-select-wrapper ${wrapperClassName}`}
+      role="combobox"
+      aria-expanded={isOpen}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
+      <button
+        className={`base-select ${className}`}
         onClick={handleToggle}
         aria-haspopup="listbox"
         aria-controls="options"
-        id="selected-option"
+        id="select"
         ref={selectedOptionRef}
       >
-        {selectedOption}
+        <span className={`base-select__label ${selectedOptionContent ? 'base-select__label--not-empty' : ''}`}>
+          Label
+        </span>
+        <div className="base-select__value">{selectedOptionContent}</div>
+        <div className={`base-select__chevron ${isOpen ? 'base-select__chevron--open' : ''}`}>
+          <Icon name="chevron-down" />
+        </div>
+      </button>
+      <div
+        ref={dropdownRef}
+        id="options"
+        className={`base-select__options ${!isOpen ? 'base-select__options--hidden' : ''} ${optionsListClassName}`}
+        role="listbox"
+        aria-labelledby="select"
+      >
+        {children}
       </div>
-      {isOpen && (
-        <ul ref={dropdownRef} id="options" role="listbox" aria-labelledby="selected-option">
-          {children}
-        </ul>
-      )}
     </div>
   );
 };

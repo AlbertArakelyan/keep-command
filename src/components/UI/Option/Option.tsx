@@ -4,9 +4,11 @@ import { IOptionProps } from './types';
 
 const Option: FC<IOptionProps> = ({ value, children, onClick, ...props }) => {
   return (
-    <li role="option" value={value} onClick={onClick} {...props}>
-      {children}
-    </li>
+    <div className="base-option-wrapper">
+      <button className="base-option" value={value} onClick={onClick} role="option" {...props}>
+        {children}
+      </button>
+    </div>
   );
 };
 

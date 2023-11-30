@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import Select from './Select';
 
@@ -7,30 +7,57 @@ import { IOptionProps } from '../Option/types';
 
 import useSelectContainer from './useSelectContainer';
 
-const SelectContainer: FC<ISelectContainerProps> = ({ selectedOption, onChange, children }) => {
-  const { highlightedIndex, handleSelect, isOpen, handleKeyDown, handleToggle, dropdownRef, selectedOptionRef } =
-    useSelectContainer(onChange);
+const SelectContainer: FC<ISelectContainerProps> = ({
+  selectedOption,
+  onChange,
+  className,
+  wrapperClassName,
+  optionsListClassName,
+  children,
+}) => {
+  const {
+    highlightedIndex,
+    setHighlightedIndex,
+    handleSelect,
+    isOpen,
+    handleKeyDown,
+    handleToggle,
+    dropdownRef,
+    selectedOptionRef,
+  } = useSelectContainer(onChange);
 
   const optionsContent = React.Children.map(children, (child, index) => {
     return React.cloneElement(child as React.ReactElement<IOptionProps>, {
       onClick: () => handleSelect((child as React.ReactElement<IOptionProps>).props.value),
+      onMouseEnter: () => setHighlightedIndex(null),
       'aria-selected': (child as React.ReactElement<IOptionProps>).props.value === selectedOption,
-      className:
+      className: `base-option ${
         (child as React.ReactElement<IOptionProps>).props.value === selectedOption
-          ? 'selected'
+          ? 'base-option--selected'
           : highlightedIndex === index
-          ? 'highlighted'
-          : '',
+          ? 'base-option--highlighted'
+          : ''
+      }`,
     });
   });
 
-  // TODO create selectedOptionContent based on selectedOption (or a component)
+  const selectedOptionContent =
+    optionsContent &&
+    (optionsContent.find(
+      (option) => (option as React.ReactElement<IOptionProps>).props.value === selectedOption
+    ) as React.ReactElement<IOptionProps>);
+
+  // TODO add filtered options for search
 
   return (
     <Select
+      wrapperClassName={wrapperClassName}
+      className={className}
+      optionsListClassName={optionsListClassName}
       isOpen={isOpen}
       handleKeyDown={handleKeyDown}
       selectedOption={selectedOption}
+      selectedOptionContent={selectedOptionContent?.props.children as ReactElement}
       onChange={onChange}
       handleToggle={handleToggle}
       dropdownRef={dropdownRef}
