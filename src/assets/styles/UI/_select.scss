@@ -46,6 +46,14 @@
   pointer-events: none;
 }
 
+.base-select__chevron {
+  transition: transform .2s ease;
+
+  &--open {
+    transform: rotate(-180deg);
+  }
+}
+
 .base-select__options {
   position: absolute;
   left: 0;

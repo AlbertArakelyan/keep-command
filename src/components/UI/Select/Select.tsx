@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { Icon } from 'components';
+
 import { ISelectProps } from './types';
 
 const Select: FC<ISelectProps> = ({
@@ -34,6 +36,9 @@ const Select: FC<ISelectProps> = ({
           Label
         </span>
         <div className="base-select__value">{selectedOptionContent}</div>
+        <div className={`base-select__chevron ${isOpen ? 'base-select__chevron--open' : ''}`}>
+          <Icon name="chevron-down" />
+        </div>
       </button>
       <div
         ref={dropdownRef}
