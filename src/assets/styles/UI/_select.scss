@@ -48,6 +48,7 @@
 
 .base-select__chevron {
   transition: transform .2s ease;
+  margin-left: auto;
 
   &--open {
     transform: rotate(-180deg);
