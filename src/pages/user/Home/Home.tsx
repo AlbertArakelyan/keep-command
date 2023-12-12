@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Select, Option } from 'components';
+import { Select, Option, Modal } from 'components';
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
 
   const handleChange = (option: string) => {
     setSelectedOption(option);
@@ -21,6 +22,10 @@ const Home = () => {
         <Option value="Option2">Option22</Option>
         <Option value="Option3">Option33</Option>
       </Select>
+      <hr />
+      <Modal isOpen={isModalOpen} title="Add Command" onClose={() => setIsModalOpen(false)}>
+        Modalnery
+      </Modal>
     </div>
   );
 };

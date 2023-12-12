@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 // Components
-import { Search, Terminal, UserAstronaut, Profile, Cogs, ChevronDown } from './icons';
+import { Search, Terminal, UserAstronaut, Profile, Cogs, ChevronDown, Close } from './icons';
 
 // Types
 import { IIconProps } from './types';
@@ -13,6 +13,7 @@ export const icons = {
   profile: Profile,
   cogs: Cogs,
   'chevron-down': ChevronDown,
+  close: Close,
 };
 
 const Icon: FC<IIconProps> = ({ name, ...props }) => {

@@ -48,6 +48,7 @@
 
 .base-select__chevron {
   transition: transform .2s ease;
+  margin-left: auto;
 
   &--open {
     transform: rotate(-180deg);
@@ -68,6 +69,7 @@
   border-top: none;
   border-bottom-left-radius: 0.206rem;
   border-bottom-right-radius: 0.206rem;
+  background-color: var(--header-footer-aside-background-color);
   transition: opacity .2s ease, visibility .2s ease;
 
   &--hidden {
