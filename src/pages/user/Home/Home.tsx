@@ -3,6 +3,7 @@ import { Select, Option, Modal } from 'components';
 
 const Home = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
 
   const handleChange = (option: string) => {
     setSelectedOption(option);
@@ -22,7 +23,9 @@ const Home = () => {
         <Option value="Option3">Option33</Option>
       </Select>
       <hr />
-      <Modal title="Add Command">Modalnery</Modal>
+      <Modal isOpen={isModalOpen} title="Add Command" onClose={() => setIsModalOpen(false)}>
+        Modalnery
+      </Modal>
     </div>
   );
 };

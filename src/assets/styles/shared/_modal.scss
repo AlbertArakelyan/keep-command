@@ -56,6 +56,10 @@
     background-color: var(--white-background-highlited-hover);
     cursor: pointer;
   }
+
+  &:active {
+    background-color: var(--white-background-highlited-active);
+  }
 }
 
 .modal-header__close-icon {
