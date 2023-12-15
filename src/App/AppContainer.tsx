@@ -3,9 +3,9 @@ import App from './App';
 import useAppContainer from './useAppContainer';
 
 const AppContainer = () => {
-  const { theme, isAuth } = useAppContainer();
+  const { theme, isUserAuth } = useAppContainer();
 
-  return <App theme={theme} isAuth={isAuth} />;
+  return <App theme={theme} isUserAuth={isUserAuth} />;
 };
 
 export default AppContainer;
