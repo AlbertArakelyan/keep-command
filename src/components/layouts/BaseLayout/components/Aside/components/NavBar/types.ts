@@ -1,5 +1,7 @@
 import { JSX } from 'react';
 
-export interface INavBarProps {
+import { UseNavBarContainerType } from './useNavBarContainer';
+
+export interface INavBarProps extends UseNavBarContainerType {
   navLinksContent: JSX.Element[];
 }
