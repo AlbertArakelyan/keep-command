@@ -1,13 +1,30 @@
 import { FC } from 'react';
 
+import { Select, Option, Separator } from 'components';
+import { AddFolderForm } from './components';
+
+import { AddItemTypes } from 'constants/global';
+
 import { IAddCommandFolderModalProps } from './types';
 
-const AddCommandFolderModal: FC<IAddCommandFolderModalProps> = ({ addingItemType, setAddingItemType }) => {
+import styles from './AddCommandFolderModal.module.scss';
+
+const AddCommandFolderModal: FC<IAddCommandFolderModalProps> = ({ addingItemType, handleChangeAddingItemType }) => {
+  console.log(addingItemType);
+
   return (
     <div>
-      <div>some select for selecting addItemType</div>
-      <form>some form based on the type ({addingItemType})</form>
-      <button>some submit button</button>
+      <Select
+        labelClassName={styles['add-command-folder-modal__select-label']}
+        selectedOption={addingItemType}
+        label="Type"
+        onChange={handleChangeAddingItemType}
+      >
+        <Option value="command">Command</Option>
+        <Option value="folder">Folder</Option>
+      </Select>
+      <Separator className={styles['add-command-folder-modal__separator']} />
+      {addingItemType === AddItemTypes.folder ? <AddFolderForm /> : <div>command modal</div>}
     </div>
   );
 };

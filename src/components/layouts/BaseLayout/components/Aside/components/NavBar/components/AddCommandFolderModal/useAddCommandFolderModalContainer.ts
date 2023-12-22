@@ -1,19 +1,24 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useQuery } from 'hooks';
 
 import { AddItemTypes } from 'constants/global';
 
 const useAddCommandFolderModalContainer = () => {
+  const navigate = useNavigate();
   const query = useQuery();
 
-  const addItemType = query.get('addItem') as AddItemTypes | null;
+  const addingItemType = query.get('addItem') as AddItemTypes | null;
 
-  const [addingItemType, setAddingItemType] = useState<AddItemTypes | null>(addItemType);
+  const handleChangeAddingItemType = (option: string) => {
+    navigate({
+      search: `addItem=${option}`,
+    });
+  };
 
   return {
     addingItemType,
-    setAddingItemType,
+    handleChangeAddingItemType,
   };
 };
 

@@ -8,12 +8,14 @@ const Select: FC<ISelectProps> = ({
   wrapperClassName = '',
   className = '',
   optionsListClassName = '',
+  labelClassName = '',
   selectedOptionContent,
   isOpen,
   handleKeyDown,
   handleToggle,
   dropdownRef,
   selectedOptionRef,
+  label,
   children,
 }) => {
   return (
@@ -32,9 +34,15 @@ const Select: FC<ISelectProps> = ({
         id="select"
         ref={selectedOptionRef}
       >
-        <span className={`base-select__label ${selectedOptionContent ? 'base-select__label--not-empty' : ''}`}>
-          Label
-        </span>
+        {label && (
+          <span
+            className={`base-select__label ${
+              selectedOptionContent ? 'base-select__label--not-empty' : ''
+            } ${labelClassName}`}
+          >
+            {label}
+          </span>
+        )}
         <div className="base-select__value">{selectedOptionContent}</div>
         <div className={`base-select__chevron ${isOpen ? 'base-select__chevron--open' : ''}`}>
           <Icon name="chevron-down" />

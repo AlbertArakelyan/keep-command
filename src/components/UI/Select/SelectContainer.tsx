@@ -12,7 +12,9 @@ const SelectContainer: FC<ISelectContainerProps> = ({
   onChange,
   className,
   wrapperClassName,
+  labelClassName,
   optionsListClassName,
+  label,
   children,
 }) => {
   const {
@@ -54,6 +56,7 @@ const SelectContainer: FC<ISelectContainerProps> = ({
       wrapperClassName={wrapperClassName}
       className={className}
       optionsListClassName={optionsListClassName}
+      labelClassName={labelClassName}
       isOpen={isOpen}
       handleKeyDown={handleKeyDown}
       selectedOption={selectedOption}
@@ -62,6 +65,7 @@ const SelectContainer: FC<ISelectContainerProps> = ({
       handleToggle={handleToggle}
       dropdownRef={dropdownRef}
       selectedOptionRef={selectedOptionRef}
+      label={label}
     >
       {optionsContent}
     </Select>
