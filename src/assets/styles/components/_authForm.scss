@@ -18,6 +18,9 @@
     margin-bottom: 1.5rem;
   }
 }
+.auth-form__input-label {
+  background-color: var(--background-color);
+}
 .auth-from__controls {
   width: 100%;
   @include flex(column, flex-start, flex-start);
