@@ -4,7 +4,7 @@ import { requiredMessage, validationLength, maxLengthMessage } from 'constants/v
 
 const folderSchema = yup.object({
   name: yup.string().max(validationLength.base, maxLengthMessage.base).required(requiredMessage),
-  description: yup.string().max(validationLength.long, maxLengthMessage.long).required().nullable(),
+  description: yup.string().max(validationLength.long, maxLengthMessage.long).required(requiredMessage).nullable(),
 });
 
 export default folderSchema;
