@@ -24,7 +24,11 @@ const AddCommandFolderModal: FC<IAddCommandFolderModalProps> = ({ addingItemType
         <Option value="folder">Folder</Option>
       </Select>
       <Separator className={styles['add-command-folder-modal__separator']} />
-      {addingItemType === AddItemTypes.folder ? <AddFolderForm /> : <div>command modal</div>}
+      {addingItemType === AddItemTypes.folder ? (
+        <AddFolderForm className={styles['add-command-folder-modal__form']} />
+      ) : (
+        <div>command modal</div>
+      )}
     </div>
   );
 };

@@ -1,12 +1,34 @@
 import { FC } from 'react';
 
+import { Input, Button } from 'components';
+
 import { IAddFolderForm } from './types';
 
-const AddFolderForm: FC<IAddFolderForm> = ({ className = '', ...props }) => {
+import styles from './AddFolderForm.module.scss';
+
+const AddFolderForm: FC<IAddFolderForm> = ({
+  className = '',
+  register,
+  handleSubmit,
+  values,
+  handleFormSubmit,
+  ...props
+}) => {
   return (
-    <form className={`test ${className}`} {...props}>
-      <div>folder</div>
-      <button>add</button>
+    <form className={className} onSubmit={handleSubmit(handleFormSubmit)} {...props}>
+      <Input
+        label="Name"
+        labelClassName={styles['add-folder-form__input-label']}
+        {...register('name')}
+        isDirty={!!values.name}
+      />
+      <Input
+        label="Description"
+        labelClassName={styles['add-folder-form__input-label']}
+        {...register('description')}
+        isDirty={!!values.description}
+      />
+      <Button className={styles['add-folder-form__submit']}>Add</Button>
     </form>
   );
 };
