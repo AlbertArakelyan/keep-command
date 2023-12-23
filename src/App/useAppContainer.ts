@@ -31,8 +31,6 @@ const useAppContainer = () => {
 
   useEffect(() => {
     AuthService.onAuthChanged((user) => {
-      console.log('user/onAuthChanged', user);
-
       dispatch(updateAuthState());
 
       if (!user) {

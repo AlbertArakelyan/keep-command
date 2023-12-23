@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Select, Option, Separator } from 'components';
+import { Select, Option, Separator, Icon } from 'components';
 import { AddFolderForm } from './components';
 
 import { AddItemTypes } from 'constants/global';
@@ -10,8 +10,6 @@ import { IAddCommandFolderModalProps } from './types';
 import styles from './AddCommandFolderModal.module.scss';
 
 const AddCommandFolderModal: FC<IAddCommandFolderModalProps> = ({ addingItemType, handleChangeAddingItemType }) => {
-  console.log(addingItemType);
-
   return (
     <div>
       <Select
@@ -20,8 +18,14 @@ const AddCommandFolderModal: FC<IAddCommandFolderModalProps> = ({ addingItemType
         label="Type"
         onChange={handleChangeAddingItemType}
       >
-        <Option value="command">Command</Option>
-        <Option value="folder">Folder</Option>
+        <Option value="command">
+          <Icon className={styles['add-command-folder-modal__option-icon']} name="terminal" />
+          <span>Command</span>
+        </Option>
+        <Option value="folder">
+          <Icon className={styles['add-command-folder-modal__option-icon']} name="folder" />
+          <span>Folder</span>
+        </Option>
       </Select>
       <Separator className={styles['add-command-folder-modal__separator']} />
       {addingItemType === AddItemTypes.folder ? (

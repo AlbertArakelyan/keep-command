@@ -5,3 +5,4 @@ export { default as Profile } from './Profile';
 export { default as Cogs } from './Cogs';
 export { default as ChevronDown } from './ChevronDown';
 export { default as Close } from './Close';
+export { default as Folder } from './Folder';
