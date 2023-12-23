@@ -6,6 +6,7 @@ import { IUIState } from './types';
 
 const initialState: IUIState = {
   theme: 'light',
+  isAddFolderCommandModalOpen: false,
 };
 
 const uiReducer = createReducer(initialState, (buider) => {

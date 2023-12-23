@@ -8,11 +8,11 @@ import { AuthLayout, BaseLayout } from 'components';
 
 import { IAppProps } from './types';
 
-const App: FC<IAppProps> = ({ theme, isAuth }) => {
+const App: FC<IAppProps> = ({ theme, isUserAuth }) => {
   return (
     <div className={`App ${theme}`}>
       <Routes>
-        {isAuth ? (
+        {isUserAuth ? (
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />

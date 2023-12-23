@@ -1,0 +1,21 @@
+@import "/src/assets/styles/abstracts/mixins";
+
+.add-command-folder-modal__select-label {
+  background-color: var(--card-color) !important;
+}
+
+.add-command-folder-modal__option-icon {
+  margin-right: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.add-command-folder-modal__separator {
+  margin-top: 2rem;
+}
+
+.add-command-folder-modal__form {
+  margin-top: 2rem;
+  row-gap: 2rem;
+  @include flex(column, flex-start, flex-start);
+}

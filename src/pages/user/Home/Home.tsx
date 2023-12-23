@@ -1,12 +1,25 @@
 import { useState } from 'react';
+import { useAppDispatch } from 'store/index';
 import { Select, Option, Modal } from 'components';
+import { addFolder } from 'store/folder';
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
 
   const handleChange = (option: string) => {
     setSelectedOption(option);
+  };
+
+  const handleRequest = () => {
+    dispatch(
+      addFolder({
+        description: 'descriptionnery',
+        name: 'namery',
+      })
+    );
   };
 
   return (
@@ -23,9 +36,10 @@ const Home = () => {
         <Option value="Option3">Option33</Option>
       </Select>
       <hr />
-      <Modal isOpen={isModalOpen} title="Add Command" onClose={() => setIsModalOpen(false)}>
+      {/* <Modal isOpen={isModalOpen} title="Add Command" onClose={() => setIsModalOpen(false)}>
         Modalnery
-      </Modal>
+      </Modal> */}
+      <button onClick={handleRequest}>add folder</button>
     </div>
   );
 };

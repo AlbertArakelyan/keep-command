@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'store/index';
 
 import { changeTheme, selectTheme } from 'store/ui';
-import { updateAuthState, selectIsAuth } from 'store/auth';
+import { updateAuthState, selectIsAuth, selectUserId } from 'store/auth';
+import { getUser, selectUser } from 'store/user';
 
 import { AuthService } from 'services';
 
@@ -15,6 +16,10 @@ const useAppContainer = () => {
 
   const theme = useAppSelector(selectTheme);
   const isAuth = useAppSelector(selectIsAuth);
+  const userId = useAppSelector(selectUserId);
+  const user = useAppSelector(selectUser);
+
+  const isUserAuth = isAuth && user;
 
   useEffect(() => {
     const preferredTheme = getPreferredTheme();
@@ -34,9 +39,15 @@ const useAppContainer = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUser(userId));
+    }
+  }, [userId]);
+
   return {
     theme,
-    isAuth,
+    isUserAuth,
   };
 };
 
