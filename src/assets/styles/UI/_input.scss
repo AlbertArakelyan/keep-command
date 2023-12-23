@@ -15,7 +15,6 @@
   font-size: 1rem;
   font-weight: 400;
   color: var(--input-border-color);
-  background-color: var(--background-color);
   text-align: left;
   transition: color .2s ease-in-out,padding .2s ease-in-out,transform .2s ease-in-out;
   pointer-events: none; // Preventing not ability of focusing while cursor is on label

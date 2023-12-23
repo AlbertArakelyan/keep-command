@@ -24,6 +24,7 @@ const Auth: FC<IAuthProps> = ({
         {isSignUp && (
           <Input
             wrapperClassName="auth-form__inputs"
+            labelClassName="auth-form__input-label"
             label="Name"
             type="text"
             isDirty={!!(values as IUserSignUpData).name}
@@ -33,6 +34,7 @@ const Auth: FC<IAuthProps> = ({
         )}
         <Input
           wrapperClassName="auth-form__inputs"
+          labelClassName="auth-form__input-label"
           label="Email"
           type="email"
           isDirty={!!values.email}
@@ -41,6 +43,7 @@ const Auth: FC<IAuthProps> = ({
         />
         <Input
           wrapperClassName="auth-form__inputs"
+          labelClassName="auth-form__input-label"
           label="Password"
           type="password"
           isDirty={!!values.password}
@@ -50,6 +53,7 @@ const Auth: FC<IAuthProps> = ({
         {isSignUp && (
           <Input
             wrapperClassName="auth-form__inputs"
+            labelClassName="auth-form__input-label"
             label="Confirm Password"
             type="password"
             isDirty={!!(values as IUserSignUpData).confirmPassword}
