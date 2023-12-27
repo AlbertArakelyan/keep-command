@@ -13,7 +13,7 @@ const useNavBarContainer = () => {
 
   const handleAddButtonClick = () => {
     navigate({
-      search: `${AddItemQuiries.addItem}=${AddItemTypes.folder}`,
+      search: `${AddItemQuiries.addItem}=${AddItemTypes.command}`,
     });
   };
 

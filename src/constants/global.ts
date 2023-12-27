@@ -1,5 +1,5 @@
 export enum AddItemTypes {
-  link = 'link',
+  command = 'command',
   folder = 'folder',
 }
 
