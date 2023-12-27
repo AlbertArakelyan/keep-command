@@ -1,0 +1,8 @@
+@import "/src/assets/styles/abstracts/mixins";
+
+.folders {
+  width: 100%;
+  @include flex(row, flex-start, flex-start); // TODO change with grid
+  flex-wrap: wrap;
+  gap: 1rem;
+}

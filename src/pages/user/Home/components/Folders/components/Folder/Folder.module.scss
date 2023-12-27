@@ -1,0 +1,73 @@
+@import "/src/assets/styles/abstracts/mixins";
+
+.folder {
+  width: calc(33.333333333% - 0.666666667rem);
+  background-color: var(--card-color);
+  border-radius: 0.375rem;
+  box-shadow: 0 0 5px var(--shadow-md-color);
+  @include flex(column, flex-start, flex-start);
+
+  &:hover {
+    .folder__actions-bar {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.folder__header {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  cursor: default;
+  padding: 1rem 1rem 0;
+  width: 100%;
+  margin-bottom: 0.1rem;
+  @include flex(column, flex-start, flex-start);
+}
+
+.folder__title {
+  width: 100%;
+  @include font(1.125rem, 700, var(--primary-text-color));
+}
+
+.folder__description {
+  width: 100%;
+  margin-top: 0.5rem;
+  @include font(0.875rem, 400, var(--secondary-text-color));
+}
+
+.folder__actions-bar {
+  width: 100%;
+  @include flex(row, center, flex-start);
+  gap: 1rem;
+  padding: 0 0.5rem;
+  min-height: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.folder__action {
+  width: 2rem;
+  height: 2rem;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  @include flex(row, center, center);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--white-background-hover);
+  }
+
+  &:active {
+    background-color: var(--white-background-active);
+  }
+}
+
+.folder__action-icon {
+  fill: var(--primary-text-color);
+}

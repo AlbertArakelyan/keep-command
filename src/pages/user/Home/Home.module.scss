@@ -1,0 +1,5 @@
+@import "/src/assets/styles/abstracts/mixins";
+
+.home__folders {
+  @include flex(column, flex-start, flex-start);
+}

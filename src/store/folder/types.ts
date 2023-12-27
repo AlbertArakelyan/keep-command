@@ -4,9 +4,11 @@ export interface IFolderState {
   list: IFolder[];
   loading: {
     addFolder: boolean;
+    getFolders: boolean;
   };
   error: {
     addFolder: string | null;
+    getFolders: string | null;
   };
 }
 
