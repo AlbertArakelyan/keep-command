@@ -1,7 +1,7 @@
 @import "/src/assets/styles/abstracts/mixins";
 
 .folder {
-  width: calc(33.333333333% - .666666667rem);
+  width: calc(33.333333333% - 0.666666667rem);
   background-color: var(--card-color);
   border-radius: 0.375rem;
   box-shadow: 0 0 5px var(--shadow-md-color);
