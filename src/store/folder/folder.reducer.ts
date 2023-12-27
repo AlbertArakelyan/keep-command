@@ -19,7 +19,7 @@ const initialState: IFolderState = {
 const folderReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addFolder.fulfilled, (state, action) => {
-      state.list.push(action.payload);
+      state.list.unshift(action.payload);
       state.loading.addFolder = false;
       state.error.addFolder = null;
     })
