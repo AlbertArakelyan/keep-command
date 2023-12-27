@@ -1,3 +1,5 @@
+import { NavigateFunction } from 'react-router-dom';
+
 import { IFolder, IFolderCreateData } from 'types';
 
 export interface IFolderState {
@@ -13,5 +15,9 @@ export interface IFolderState {
 }
 
 // addFolder action
-export type IAddFolderPayloadData = IFolderCreateData;
+export interface IAddFolderPayloadData {
+  data: IFolderCreateData;
+  navigate: NavigateFunction;
+}
+
 export type IAddFolderReturnData = IFolder;

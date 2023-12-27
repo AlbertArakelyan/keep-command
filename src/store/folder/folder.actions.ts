@@ -12,7 +12,7 @@ import { IFolderWithoutId, IFolder } from 'types';
 
 export const addFolder = createAsyncThunk<IAddFolderReturnData, IAddFolderPayloadData, { state: RootState }>(
   ADD_FOLDER,
-  async (data, { getState }) => {
+  async ({ data, navigate }, { getState }) => {
     try {
       // TODO create a helper for userId getter function
       const { user } = getState().user;
@@ -35,6 +35,10 @@ export const addFolder = createAsyncThunk<IAddFolderReturnData, IAddFolderPayloa
         ...sendData,
         id: response.id,
       };
+
+      navigate({
+        search: '',
+      });
 
       return responseData;
     } catch (error: any) {
