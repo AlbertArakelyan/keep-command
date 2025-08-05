@@ -1,6 +1,7 @@
 package db
 
 import (
+	"github.com/AlbertArakelyan/keep-command/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -16,4 +17,8 @@ func InitDB() {
 	}
 
 	// Automigrate models
+	err = DB.AutoMigrate(&models.Folder{}, &models.Command{})
+	if err != nil {
+		panic(err)
+	}
 }
