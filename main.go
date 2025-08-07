@@ -3,6 +3,7 @@ package main
 import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
 )
 
@@ -16,7 +17,7 @@ func main() {
 
 	myApp.App = app.NewWithID("com.keepcommand.aa")
 	myApp.MainWindow = myApp.App.NewWindow("Keep Command")
-	myApp.MainWindow.Resize(fyne.NewSize(800, 600))
+	myApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 
 	db.InitDB()
 
