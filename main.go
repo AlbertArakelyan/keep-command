@@ -21,5 +21,7 @@ func main() {
 
 	db.InitDB()
 
+	myApp.makeUI()
+
 	myApp.MainWindow.ShowAndRun()
 }
