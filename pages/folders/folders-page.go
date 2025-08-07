@@ -71,7 +71,18 @@ func FoldersPage(mainWindow fyne.Window) fyne.CanvasObject {
 		grid.Add(card)
 	}
 
-	foldersPageContent := container.NewScroll(grid)
+	newFolderButton := widget.NewButtonWithIcon("New Folder", theme.ContentAddIcon(), func() {})
+	newFolderButton.Importance = widget.LowImportance
+	newFolderButton.Resize(fyne.NewSize(150, 30))
+	newFolderButton.Move(fyne.NewPos(mainWindow.Canvas().Size().Width-newFolderButton.MinSize().Width, mainWindow.Canvas().Size().Height-newFolderButton.MinSize().Height))
+
+	foldersPageContent := container.NewBorder(
+		nil,
+		newFolderButton,
+		nil,
+		nil,
+		container.NewScroll(grid),
+	)
 
 	return foldersPageContent
 }
