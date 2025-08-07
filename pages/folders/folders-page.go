@@ -7,6 +7,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -43,20 +44,27 @@ func FoldersPage(mainWindow fyne.Window) fyne.CanvasObject {
 
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
 	for _, folder := range folders {
+		openButton := widget.NewButtonWithIcon("Open", theme.FolderIcon(), func() {
+			dialog.ShowInformation(
+				"Folder Details",
+				"ID: "+strconv.Itoa(folder.ID)+"\nName: "+folder.Name+"\nDescription: "+folder.Description,
+				mainWindow,
+			)
+		})
+		openButton.Importance = widget.HighImportance
+
+		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {})
+		deleteButton.Importance = widget.DangerImportance
+
 		card := widget.NewCard(
-			folder.Name,
+			"📂 "+folder.Name,
 			folder.Description,
-			container.NewVBox(
+			container.NewGridWithColumns(2,
 				// widget.NewLabel("ID: "+strconv.Itoa(folder.ID)),
 				// widget.NewLabel("Created: "+folder.CreatedAt.Format(time.RFC822)),
 				// widget.NewLabel("Updated: "+folder.UpdatedAt.Format(time.RFC822)),
-				widget.NewButton("Open", func() {
-					dialog.ShowInformation(
-						"Folder Details",
-						"ID: "+strconv.Itoa(folder.ID)+"\nName: "+folder.Name+"\nDescription: "+folder.Description,
-						mainWindow,
-					)
-				}),
+				openButton,
+				deleteButton,
 			),
 		)
 
