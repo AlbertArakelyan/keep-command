@@ -51,10 +51,8 @@ func FoldersPage(mainWindow fyne.Window) fyne.CanvasObject {
 				mainWindow,
 			)
 		})
-		openButton.Importance = widget.HighImportance
 
 		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {})
-		deleteButton.Importance = widget.DangerImportance
 
 		card := widget.NewCard(
 			"📂 "+folder.Name,
