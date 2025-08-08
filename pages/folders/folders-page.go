@@ -79,7 +79,7 @@ func FoldersPage(mainWindow fyne.Window) fyne.CanvasObject {
 		newFolderButton,
 		nil,
 		nil,
-		container.NewScroll(grid),
+		container.NewVScroll(grid),
 	)
 
 	return foldersPageContent
