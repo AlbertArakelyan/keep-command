@@ -11,7 +11,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func FoldersPage(mainWindow fyne.Window) fyne.CanvasObject {
+func FoldersPage(mainWindow fyne.Window) *fyne.Container {
 	folders := []struct {
 		Name        string
 		Description string
