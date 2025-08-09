@@ -5,23 +5,20 @@ import (
 	"fyne.io/fyne/v2/app"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
+	myapp "github.com/AlbertArakelyan/keep-command/my-app"
+	"github.com/AlbertArakelyan/keep-command/pages/folders"
 )
 
-type App struct {
-	App        fyne.App
-	MainWindow fyne.Window
-}
-
 func main() {
-	var myApp App
+	myapp.MyApp.App = app.NewWithID("com.keepcommand.aa")
+	myapp.MyApp.MainWindow = myapp.MyApp.App.NewWindow("Keep Command")
+	myapp.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 
-	myApp.App = app.NewWithID("com.keepcommand.aa")
-	myApp.MainWindow = myApp.App.NewWindow("Keep Command")
-	myApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
+	myapp.MyApp.ActiveContent = folders.FoldersPage()
 
 	db.InitDB()
 
-	myApp.makeUI()
+	myapp.MyApp.MakeUI()
 
-	myApp.MainWindow.ShowAndRun()
+	myapp.MyApp.MainWindow.ShowAndRun()
 }

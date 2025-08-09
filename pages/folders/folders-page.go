@@ -9,9 +9,12 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	myapp "github.com/AlbertArakelyan/keep-command/my-app"
 )
 
-func FoldersPage(mainWindow fyne.Window) *fyne.Container {
+func FoldersPage() *fyne.Container {
+	mainWindow := myapp.MyApp.MainWindow
+
 	folders := []struct {
 		Name        string
 		Description string

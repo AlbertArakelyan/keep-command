@@ -1,4 +1,5 @@
 package constants
 
-var WinWidth = float32(800)
-var WinHeight = float32(600)
+// Sizes
+var WinWidth = float32(1280)
+var WinHeight = float32(720)
