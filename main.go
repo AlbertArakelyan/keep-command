@@ -14,6 +14,7 @@ func main() {
 	myapp.MyApp.MainWindow = myapp.MyApp.App.NewWindow("Keep Command")
 	myapp.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 
+	myapp.MyApp.HomePage = folders.FoldersPage()
 	myapp.MyApp.ActiveContent = folders.FoldersPage()
 
 	db.InitDB()
