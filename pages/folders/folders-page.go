@@ -55,7 +55,7 @@ func FoldersPage(mainWindow fyne.Window) *fyne.Container {
 		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {})
 
 		card := widget.NewCard(
-			"📂 "+folder.Name,
+			"🗂 "+folder.Name,
 			folder.Description,
 			container.NewGridWithColumns(2,
 				// widget.NewLabel("ID: "+strconv.Itoa(folder.ID)),
