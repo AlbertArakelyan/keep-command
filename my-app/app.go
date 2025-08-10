@@ -21,3 +21,8 @@ func (app *App) MakeUI() {
 
 	app.MainWindow.SetContent(mainLayout(app.ActiveContent))
 }
+
+func (app *App) SetActiveContent(page *fyne.Container) {
+	app.ActiveContent = page
+	app.MainWindow.SetContent(layout.NewMainLayout(app.MainWindow)(app.ActiveContent))
+}
