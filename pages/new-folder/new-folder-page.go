@@ -25,9 +25,32 @@ func NewFolderPage() *fyne.Container {
 		backButton,
 	)
 
+	titleEntry := widget.NewEntry()
+	titleEntry.SetPlaceHolder("Folder Title")
+
+	descriptionEntry := widget.NewMultiLineEntry()
+	descriptionEntry.SetPlaceHolder("Folder Description")
+
+	tasgEntry := widget.NewEntry()
+	tasgEntry.SetPlaceHolder("Tags")
+
+	saveFolderButton := widget.NewButton("💾 Save Folder", func() {})
+	// saveFolderButton.Importance = widget.HighImportance
+
+	formContainer := container.NewVBox(
+		titleEntry,
+		descriptionEntry,
+		container.NewVBox(
+			tasgEntry,
+			widget.NewLabel("*Separate by commas, e.g. go,docker,javascript"),
+		),
+		saveFolderButton,
+	)
+
 	newFolderPageContent := container.NewVBox(
 		createBar,
 		canvas.NewLine(color.White),
+		formContainer,
 	)
 
 	return newFolderPageContent
