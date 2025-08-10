@@ -2,7 +2,7 @@ package myapp
 
 import (
 	"fyne.io/fyne/v2"
-	"github.com/AlbertArakelyan/keep-command/layout"
+	"github.com/AlbertArakelyan/keep-command/layouts"
 	"github.com/AlbertArakelyan/keep-command/models"
 )
 
@@ -17,12 +17,12 @@ type App struct {
 var MyApp App
 
 func (app *App) MakeUI() {
-	mainLayout := layout.NewMainLayout(app.MainWindow)
+	mainLayout := layouts.NewMainLayout(app.MainWindow)
 
 	app.MainWindow.SetContent(mainLayout(app.ActiveContent))
 }
 
 func (app *App) SetActiveContent(page *fyne.Container) {
 	app.ActiveContent = page
-	app.MainWindow.SetContent(layout.NewMainLayout(app.MainWindow)(app.ActiveContent))
+	app.MainWindow.SetContent(layouts.NewMainLayout(app.MainWindow)(app.ActiveContent))
 }
