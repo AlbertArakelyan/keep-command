@@ -15,7 +15,7 @@ import (
 
 func FoldersPage() *fyne.Container {
 	myApp := myapp.MyApp
-	mainWindow := myapp.MyApp.MainWindow
+	mainWindow := myApp.MainWindow
 
 	folders := []struct {
 		Name        string
