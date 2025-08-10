@@ -3,13 +3,15 @@ package myapp
 import (
 	"fyne.io/fyne/v2"
 	"github.com/AlbertArakelyan/keep-command/layout"
+	"github.com/AlbertArakelyan/keep-command/models"
 )
 
 type App struct {
-	App           fyne.App
-	MainWindow    fyne.Window
-	ActiveContent *fyne.Container
-	HomePage      *fyne.Container // folders-page
+	App            fyne.App
+	MainWindow     fyne.Window
+	SelectedFolder models.Folder
+	ActiveContent  *fyne.Container
+	HomePage       *fyne.Container // folders-page
 }
 
 var MyApp App
