@@ -10,9 +10,11 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	myapp "github.com/AlbertArakelyan/keep-command/my-app"
+	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 )
 
 func FoldersPage() *fyne.Container {
+	myApp := myapp.MyApp
 	mainWindow := myapp.MyApp.MainWindow
 
 	folders := []struct {
@@ -72,7 +74,9 @@ func FoldersPage() *fyne.Container {
 		grid.Add(card)
 	}
 
-	newFolderButton := widget.NewButtonWithIcon("New Folder", theme.ContentAddIcon(), func() {})
+	newFolderButton := widget.NewButtonWithIcon("New Folder", theme.ContentAddIcon(), func() {
+		myApp.SetActiveContent(newfolder.NewFolderPage())
+	})
 	newFolderButton.Importance = widget.LowImportance
 	newFolderButton.Resize(fyne.NewSize(150, 30))
 	newFolderButton.Move(fyne.NewPos(mainWindow.Canvas().Size().Width-newFolderButton.MinSize().Width, mainWindow.Canvas().Size().Height-newFolderButton.MinSize().Height))
