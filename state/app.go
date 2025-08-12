@@ -1,4 +1,4 @@
-package myapp
+package state
 
 import (
 	"fyne.io/fyne/v2"

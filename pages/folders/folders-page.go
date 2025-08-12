@@ -9,12 +9,12 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
-	myapp "github.com/AlbertArakelyan/keep-command/my-app"
 	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
+	state "github.com/AlbertArakelyan/keep-command/state"
 )
 
 func FoldersPage() *fyne.Container {
-	myApp := myapp.MyApp
+	myApp := state.MyApp
 	mainWindow := myApp.MainWindow
 
 	folders := []struct {

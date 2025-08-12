@@ -5,25 +5,25 @@ import (
 	"fyne.io/fyne/v2/app"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
-	myapp "github.com/AlbertArakelyan/keep-command/my-app"
 	"github.com/AlbertArakelyan/keep-command/pages/folders"
+	state "github.com/AlbertArakelyan/keep-command/state"
 )
 
 func main() {
-	myapp.MyApp.App = app.NewWithID("com.keepcommand.aa")
-	myapp.MyApp.MainWindow = myapp.MyApp.App.NewWindow("Keep Command")
-	myapp.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
+	state.MyApp.App = app.NewWithID("com.keepcommand.aa")
+	state.MyApp.MainWindow = state.MyApp.App.NewWindow("Keep Command")
+	state.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 
 	setInitialPage()
 
 	db.InitDB()
 
-	myapp.MyApp.MakeUI()
+	state.MyApp.MakeUI()
 
-	myapp.MyApp.MainWindow.ShowAndRun()
+	state.MyApp.MainWindow.ShowAndRun()
 }
 
 func setInitialPage() {
-	myapp.MyApp.HomePage = folders.FoldersPage()
-	myapp.MyApp.ActiveContent = folders.FoldersPage()
+	state.MyApp.HomePage = folders.FoldersPage()
+	state.MyApp.ActiveContent = folders.FoldersPage()
 }
