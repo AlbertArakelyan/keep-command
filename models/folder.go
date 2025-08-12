@@ -8,7 +8,7 @@ import (
 
 type Folder struct {
 	ID          int    `gorm:"primary_key;auto_increment"`
-	Name        string `gorm:not null;unique"`
+	Name        string `gorm:not null;unique" binding:"required"`
 	Description string
 	FolderTags  string    `gorm:"not null"`
 	CreatedAt   time.Time `gorm:"autoCreateTime"`

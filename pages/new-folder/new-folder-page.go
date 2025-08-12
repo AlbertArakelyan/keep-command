@@ -21,7 +21,9 @@ func NewFolderPage() *fyne.Container {
 	createBarTitle.TextSize = constants.PageTitleFontSize
 	createBarTitle.TextStyle = fyne.TextStyle{Bold: true}
 
-	backButton := widget.NewButton("⬅️ Back", func() {})
+	backButton := widget.NewButton("⬅️ Back", func() {
+		state.MyApp.SetActiveContent(state.MyApp.HomePage)
+	})
 
 	createBar := container.NewHBox(
 		createBarTitle,
@@ -39,11 +41,13 @@ func NewFolderPage() *fyne.Container {
 	tasgEntry.SetPlaceHolder("Tags")
 
 	saveFolderButton := widget.NewButton("💾 Save Folder", func() {
-		if titleEntry.Text == "" || descriptionEntry.Text == "" {
+		if titleEntry.Text == "" {
 			dialog.ShowError(
-				errors.New("title and description are required"),
+				errors.New("title is required"),
 				state.MyApp.MainWindow,
 			)
+
+			return
 		}
 
 		folder := models.Folder{
@@ -55,8 +59,11 @@ func NewFolderPage() *fyne.Container {
 		err := folder.Create()
 		if err != nil {
 			dialog.ShowError(err, state.MyApp.MainWindow)
+			
 			return
 		}
+
+		state.MyApp.SetActiveContent(state.MyApp.HomePage)
 	})
 	// saveFolderButton.Importance = widget.HighImportance
 
