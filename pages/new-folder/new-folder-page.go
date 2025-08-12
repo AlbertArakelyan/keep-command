@@ -1,14 +1,18 @@
 package newfolder
 
 import (
+	"errors"
 	"image/color"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/constants"
+	"github.com/AlbertArakelyan/keep-command/models"
+	"github.com/AlbertArakelyan/keep-command/state"
 )
 
 func NewFolderPage() *fyne.Container {
@@ -34,7 +38,26 @@ func NewFolderPage() *fyne.Container {
 	tasgEntry := widget.NewEntry()
 	tasgEntry.SetPlaceHolder("Tags")
 
-	saveFolderButton := widget.NewButton("💾 Save Folder", func() {})
+	saveFolderButton := widget.NewButton("💾 Save Folder", func() {
+		if titleEntry.Text == "" || descriptionEntry.Text == "" {
+			dialog.ShowError(
+				errors.New("title and description are required"),
+				state.MyApp.MainWindow,
+			)
+		}
+
+		folder := models.Folder{
+			Name:        titleEntry.Text,
+			Description: descriptionEntry.Text,
+			FolderTags:  tasgEntry.Text,
+		}
+
+		err := folder.Create()
+		if err != nil {
+			dialog.ShowError(err, state.MyApp.MainWindow)
+			return
+		}
+	})
 	// saveFolderButton.Importance = widget.HighImportance
 
 	formContainer := container.NewVBox(
