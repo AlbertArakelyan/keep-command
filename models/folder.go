@@ -18,3 +18,10 @@ type Folder struct {
 func (folder *Folder) Create() error {
 	return sqlitedb.DB.Create(&folder).Error
 }
+
+func GetFolders() ([]Folder, error) {
+	var folders []Folder
+	err := sqlitedb.DB.Find(&folders).Error
+	
+	return folders, err
+}
