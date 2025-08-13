@@ -17,7 +17,9 @@ func FoldersPage() *fyne.Container {
 	myApp := state.MyApp
 	mainWindow := myApp.MainWindow
 
-	folders, err := models.GetFolders()
+	var err error = nil
+
+	state.Folders, err = models.GetFolders()
 	if err != nil {
 		dialog.ShowError(
 			err,
@@ -26,7 +28,7 @@ func FoldersPage() *fyne.Container {
 	}
 
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
-	for _, folder := range folders {
+	for _, folder := range state.Folders {
 		openButton := widget.NewButtonWithIcon("Open", theme.FolderIcon(), func() {
 			dialog.ShowInformation(
 				"Folder Details",
