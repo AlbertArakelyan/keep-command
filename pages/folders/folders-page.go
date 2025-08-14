@@ -1,14 +1,13 @@
 package folders
 
 import (
-	"strconv"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/models"
+	"github.com/AlbertArakelyan/keep-command/pages/commands"
 	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
@@ -30,11 +29,8 @@ func FoldersPage() *fyne.Container {
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
 	for _, folder := range state.Folders {
 		openButton := widget.NewButtonWithIcon("Open", theme.FolderIcon(), func() {
-			dialog.ShowInformation(
-				"Folder Details",
-				"ID: "+strconv.Itoa(folder.ID)+"\nName: "+folder.Name+"\nDescription: "+folder.Description,
-				mainWindow,
-			)
+			state.SelectedFolder = &folder
+			myApp.SetActiveContent(commands.CommandsPage())
 		})
 
 		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {})
