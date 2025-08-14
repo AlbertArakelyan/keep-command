@@ -4,7 +4,7 @@ import "time"
 
 type Command struct {
 	ID           int    `gorm:"primary_key;auto_increment"`
-	Name         string `gorm:not null"`
+	Name         string `gorm:"not null"`
 	Description  string
 	CommandValue string    `gorm:"not null"`
 	CommandTags  string    `gorm:"not null"`
