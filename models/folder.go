@@ -22,6 +22,6 @@ func (folder *Folder) Create() error {
 func GetFolders() ([]Folder, error) {
 	var folders []Folder
 	err := sqlitedb.DB.Find(&folders).Error
-	
+
 	return folders, err
 }
