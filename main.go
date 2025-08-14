@@ -14,9 +14,9 @@ func main() {
 	state.MyApp.MainWindow = state.MyApp.App.NewWindow("Keep Command")
 	state.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 
-	setInitialPage()
-
 	db.InitDB()
+
+	setInitialPage()
 
 	state.MyApp.MakeUI()
 

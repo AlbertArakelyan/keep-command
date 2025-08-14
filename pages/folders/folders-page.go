@@ -2,13 +2,13 @@ package folders
 
 import (
 	"strconv"
-	"time"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"github.com/AlbertArakelyan/keep-command/models"
 	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
@@ -17,38 +17,18 @@ func FoldersPage() *fyne.Container {
 	myApp := state.MyApp
 	mainWindow := myApp.MainWindow
 
-	folders := []struct {
-		Name        string
-		Description string
-		ID          int
-		CreatedAt   time.Time
-		UpdatedAt   time.Time
-	}{
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
-		{"Test1", "Test folder 1", 1, time.Now(), time.Now()},
-		{"Test2", "Test folder 2", 2, time.Now(), time.Now()},
-		{"Test3", "Test folder 3", 3, time.Now(), time.Now()},
+	var err error = nil
+
+	state.Folders, err = models.GetFolders()
+	if err != nil {
+		dialog.ShowError(
+			err,
+			mainWindow,
+		)
 	}
 
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
-	for _, folder := range folders {
+	for _, folder := range state.Folders {
 		openButton := widget.NewButtonWithIcon("Open", theme.FolderIcon(), func() {
 			dialog.ShowInformation(
 				"Folder Details",
@@ -71,7 +51,7 @@ func FoldersPage() *fyne.Container {
 			),
 		)
 
-		grid.Add(card)
+		grid.Add(container.NewVBox(card)) // NewVBox is for height: auto
 	}
 
 	newFolderButton := widget.NewButtonWithIcon("New Folder", theme.ContentAddIcon(), func() {
