@@ -59,7 +59,7 @@ func NewFolderPage() *fyne.Container {
 		err := folder.Create()
 		if err != nil {
 			dialog.ShowError(err, state.MyApp.MainWindow)
-			
+
 			return
 		}
 
