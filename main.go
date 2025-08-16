@@ -7,6 +7,7 @@ import (
 	"github.com/AlbertArakelyan/keep-command/db"
 	"github.com/AlbertArakelyan/keep-command/pages/commands"
 	"github.com/AlbertArakelyan/keep-command/pages/folders"
+	newcommand "github.com/AlbertArakelyan/keep-command/pages/new-command"
 	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
@@ -32,7 +33,8 @@ func setInitialPage() {
 }
 
 func registerPages() {
-	state.MyApp.NewFolderPage = newfolder.NewFolderPage()
 	state.MyApp.FoldersPage = folders.FoldersPage
+	state.MyApp.NewFolderPage = newfolder.NewFolderPage()
 	state.MyApp.CommandsPage = commands.CommandsPage
+	state.MyApp.NewCommandPage = newcommand.NewCommandPage()
 }

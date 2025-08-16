@@ -16,9 +16,10 @@ type App struct {
 }
 
 type AppPages struct {
-	NewFolderPage *fyne.Container
-	FoldersPage   func() *fyne.Container
-	CommandsPage  func() *fyne.Container
+	FoldersPage    func() *fyne.Container
+	NewFolderPage  *fyne.Container
+	CommandsPage   func() *fyne.Container
+	NewCommandPage *fyne.Container
 }
 
 var MyApp App

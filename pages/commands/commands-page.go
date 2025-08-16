@@ -14,6 +14,8 @@ import (
 )
 
 func CommandsPage() *fyne.Container {
+	myApp := state.MyApp
+
 	if state.SelectedFolder == nil {
 		return container.NewVBox(
 			widget.NewLabel("No folder selected"),
@@ -35,7 +37,9 @@ func CommandsPage() *fyne.Container {
 		backButton,
 	)
 
-	newCommandButton := widget.NewButtonWithIcon("New Command", theme.ContentAddIcon(), func() {})
+	newCommandButton := widget.NewButtonWithIcon("New Command", theme.ContentAddIcon(), func() {
+		myApp.SetActiveContent(myApp.NewCommandPage)
+	})
 
 	commandsPageContent := container.NewBorder(
 		nil,
