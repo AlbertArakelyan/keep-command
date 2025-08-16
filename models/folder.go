@@ -25,3 +25,7 @@ func GetFolders() ([]Folder, error) {
 
 	return folders, err
 }
+
+func DeleteFolder(id int) error {
+	return sqlitedb.DB.Where("id = ?", id).Delete(&Folder{}).Error
+}

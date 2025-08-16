@@ -34,7 +34,32 @@ func FoldersPage() *fyne.Container {
 			myApp.SetActiveContent(commands.CommandsPage())
 		})
 
-		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {})
+		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {
+			dialog.ShowConfirm(
+				"Delete Folder",
+				"Are you sure you want to delete this folder?",
+				func(b bool) {
+					if b {
+						err := models.DeleteFolder(folder.ID)
+						if err != nil {
+							dialog.ShowError(
+								err,
+								mainWindow,
+							)
+						}
+						state.Folders, err = models.GetFolders()
+						if err != nil {
+							dialog.ShowError(
+								err,
+								mainWindow,
+							)
+						}
+						myApp.SetActiveContent(FoldersPage())
+					}
+				},
+				mainWindow,
+			)
+		})
 
 		card := widget.NewCard(
 			"🗂 "+folder.Name,
