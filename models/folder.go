@@ -21,7 +21,7 @@ func (folder *Folder) Create() error {
 
 func GetFolders() ([]Folder, error) {
 	var folders []Folder
-	err := sqlitedb.DB.Find(&folders).Error
+	err := sqlitedb.DB.Order("created_at desc").Find(&folders).Error
 
 	return folders, err
 }
