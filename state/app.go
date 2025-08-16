@@ -12,6 +12,13 @@ type App struct {
 	SelectedFolder models.Folder
 	ActiveContent  *fyne.Container
 	HomePage       *fyne.Container // folders-page
+	AppPages
+}
+
+type AppPages struct {
+	NewFolderPage *fyne.Container
+	FoldersPage   func() *fyne.Container
+	CommandsPage  func() *fyne.Container
 }
 
 var MyApp App

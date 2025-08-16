@@ -63,7 +63,7 @@ func NewFolderPage() *fyne.Container {
 			return
 		}
 
-		state.MyApp.SetActiveContent(state.MyApp.HomePage)
+		state.MyApp.SetActiveContent(state.MyApp.FoldersPage())
 	})
 	// saveFolderButton.Importance = widget.HighImportance
 

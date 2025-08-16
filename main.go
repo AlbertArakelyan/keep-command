@@ -5,7 +5,9 @@ import (
 	"fyne.io/fyne/v2/app"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
+	"github.com/AlbertArakelyan/keep-command/pages/commands"
 	"github.com/AlbertArakelyan/keep-command/pages/folders"
+	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
 
@@ -16,6 +18,7 @@ func main() {
 
 	db.InitDB()
 
+	registerPages()
 	setInitialPage()
 
 	state.MyApp.MakeUI()
@@ -26,4 +29,10 @@ func main() {
 func setInitialPage() {
 	state.MyApp.HomePage = folders.FoldersPage()
 	state.MyApp.ActiveContent = folders.FoldersPage()
+}
+
+func registerPages() {
+	state.MyApp.NewFolderPage = newfolder.NewFolderPage()
+	state.MyApp.FoldersPage = folders.FoldersPage
+	state.MyApp.CommandsPage = commands.CommandsPage
 }

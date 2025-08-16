@@ -1,6 +1,8 @@
 package folders
 
 import (
+	"fmt"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
@@ -8,7 +10,6 @@ import (
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/models"
 	"github.com/AlbertArakelyan/keep-command/pages/commands"
-	newfolder "github.com/AlbertArakelyan/keep-command/pages/new-folder"
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
 
@@ -51,7 +52,10 @@ func FoldersPage() *fyne.Container {
 	}
 
 	newFolderButton := widget.NewButtonWithIcon("New Folder", theme.ContentAddIcon(), func() {
-		myApp.SetActiveContent(newfolder.NewFolderPage())
+		if myApp.NewFolderPage == nil {
+			fmt.Println("myApp.NewFolderPage is nil")
+		}
+		myApp.SetActiveContent(myApp.NewFolderPage)
 	})
 	newFolderButton.Importance = widget.LowImportance
 	newFolderButton.Resize(fyne.NewSize(150, 30))
