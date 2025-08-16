@@ -7,6 +7,7 @@ import (
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/state"
@@ -34,8 +35,18 @@ func CommandsPage() *fyne.Container {
 		backButton,
 	)
 
-	return container.NewVBox(
-		titleBar,
-		canvas.NewLine(color.White),
+	newCommandButton := widget.NewButtonWithIcon("New Command", theme.ContentAddIcon(), func() {})
+
+	commandsPageContent := container.NewBorder(
+		nil,
+		newCommandButton,
+		nil,
+		nil,
+		container.NewVBox(
+			titleBar,
+			canvas.NewLine(color.White),
+		),
 	)
+
+	return commandsPageContent
 }
