@@ -3,6 +3,7 @@ package main
 import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/theme"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
 	"github.com/AlbertArakelyan/keep-command/pages/commands"
@@ -15,6 +16,7 @@ import (
 
 func main() {
 	state.MyApp.App = app.NewWithID("com.keepcommand.aa")
+	state.MyApp.App.Settings().SetTheme(theme.DarkTheme()) // TODO: temporary, remove once our own theme is created
 	state.MyApp.MainWindow = state.MyApp.App.NewWindow("Keep Command")
 	state.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
 	state.MyApp.Clipboard = state.MyApp.App.Clipboard()
