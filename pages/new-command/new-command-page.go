@@ -9,6 +9,7 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/constants"
+	"github.com/AlbertArakelyan/keep-command/state"
 )
 
 func NewCommandPage() *fyne.Container {
@@ -17,7 +18,9 @@ func NewCommandPage() *fyne.Container {
 	createBarTitle.TextSize = constants.PageTitleFontSize
 	createBarTitle.TextStyle = fyne.TextStyle{Bold: true}
 
-	backButton := widget.NewButton("⬅️ Back", func() {})
+	backButton := widget.NewButton("⬅️ Back", func() {
+		state.MyApp.SetActiveContent(state.MyApp.HomePage)
+	})
 
 	createBar := container.NewHBox(
 		createBarTitle,

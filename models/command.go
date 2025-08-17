@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	sqlitedb "github.com/AlbertArakelyan/keep-command/db/sqlite-db"
+)
 
 type Command struct {
 	ID           int    `gorm:"primary_key;auto_increment"`
@@ -12,4 +16,8 @@ type Command struct {
 	Folder       Folder    `gorm:"foreignKey:FolderId;references:ID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 	CreatedAt    time.Time `gorm:"autoCreateTime"`
 	UpdatedAt    time.Time `gorm:"autoUpdateTime"`
+}
+
+func (command *Command) Create() error {
+	return sqlitedb.DB.Create(&command).Error
 }

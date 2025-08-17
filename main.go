@@ -29,7 +29,7 @@ func main() {
 
 func setInitialPage() {
 	state.MyApp.HomePage = folders.FoldersPage()
-	state.MyApp.ActiveContent = folders.FoldersPage()
+	state.MyApp.ActiveContent = folders.FoldersPage() // TODO change with state.MyApp.HomePage
 }
 
 func registerPages() {
