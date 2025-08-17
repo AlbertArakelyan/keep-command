@@ -29,6 +29,7 @@ func CommandsPage() *fyne.Container {
 
 	backButton := widget.NewButton("⬅️ Back", func() {
 		state.MyApp.SetActiveContent(state.MyApp.HomePage)
+		state.SelectedFolder = nil
 	})
 
 	titleBar := container.NewHBox(
