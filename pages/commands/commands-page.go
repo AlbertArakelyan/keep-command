@@ -79,10 +79,7 @@ func CommandsPage() *fyne.Container {
 			command.Name,
 			command.Description,
 			container.NewVBox(
-				container.NewStack(
-					canvas.NewRectangle(color.Gray{}),
-					borderedCommandPreview,
-				),
+				borderedCommandPreview,
 				container.NewGridWithColumns(3,
 					// widget.NewLabel("ID: "+strconv.Itoa(command.ID)),
 					// widget.NewLabel("Created: "+command.CreatedAt.Format(time.RFC822)),
