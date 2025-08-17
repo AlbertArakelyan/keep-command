@@ -108,9 +108,14 @@ func CommandsPage() *fyne.Container {
 		state.SelectedFolder = nil
 	})
 
+	editButton := widget.NewButton("✏️ Edit", func() {
+		state.EditingFolder = state.SelectedFolder
+	})
+
 	titleBar := container.NewHBox(
 		title,
 		layout.NewSpacer(),
+		editButton,
 		backButton,
 	)
 
