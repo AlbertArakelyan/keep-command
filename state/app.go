@@ -20,6 +20,7 @@ type AppPages struct {
 	NewFolderPage  *fyne.Container
 	CommandsPage   func() *fyne.Container
 	NewCommandPage *fyne.Container
+	EditFolderPage func() *fyne.Container
 }
 
 var MyApp App
