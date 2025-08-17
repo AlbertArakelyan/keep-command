@@ -39,13 +39,23 @@ func CommandsPage() *fyne.Container {
 				"Are you sure you want to delete this command?",
 				func(b bool) {
 					if b {
-						// err := models.DeleteCommand(command.ID)
-						// if err != nil {
-						// 	dialog.ShowError(
-						// 		err,
-						// 		myApp.MainWindow,
-						// 	)
-						// }
+						err := models.DeleteCommand(command.ID)
+						if err != nil {
+							dialog.ShowError(
+								err,
+								myApp.MainWindow,
+							)
+						}
+
+						state.Commands, err = models.GetCommands(state.SelectedFolder.ID)
+						if err != nil {
+							dialog.ShowError(
+								err,
+								myApp.MainWindow,
+							)
+						}
+
+						myApp.SetActiveContent(CommandsPage())
 					}
 				},
 				myApp.MainWindow,
