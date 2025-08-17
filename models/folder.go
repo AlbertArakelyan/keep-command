@@ -29,3 +29,7 @@ func GetFolders() ([]Folder, error) {
 func DeleteFolder(id int) error {
 	return sqlitedb.DB.Where("id = ?", id).Delete(&Folder{}).Error
 }
+
+func (folder *Folder) Update() error {
+	return sqlitedb.DB.Save(&folder).Error
+}

@@ -1,12 +1,14 @@
 package editfolder
 
 import (
+	"errors"
 	"fmt"
 	"image/color"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
 	"github.com/AlbertArakelyan/keep-command/constants"
@@ -42,7 +44,33 @@ func EditFolderPage() *fyne.Container {
 	tasgEntry.SetPlaceHolder("Tags *")
 	tasgEntry.SetText(state.EditingFolder.FolderTags)
 
-	editFolderButton := widget.NewButton("💾 Edit Folder", func() {})
+	editFolderButton := widget.NewButton("💾 Edit Folder", func() {
+		if titleEntry.Text == "" || tasgEntry.Text == "" {
+			dialog.ShowError(
+				errors.New("title and tags are required"),
+				state.MyApp.MainWindow,
+			)
+
+			return
+		}
+
+		state.EditingFolder.Name = titleEntry.Text
+		state.EditingFolder.Description = descriptionEntry.Text
+		state.EditingFolder.FolderTags = tasgEntry.Text
+
+		err := state.EditingFolder.Update()
+		if err != nil {
+			dialog.ShowError(
+				err,
+				state.MyApp.MainWindow,
+			)
+
+			return
+		}
+
+		state.EditingFolder = nil
+		state.MyApp.SetActiveContent(state.MyApp.CommandsPage())
+	})
 	// editFolderButton.Importance = widget.HighImportance
 
 	formContainer := container.NewVBox(
