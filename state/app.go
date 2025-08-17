@@ -9,6 +9,7 @@ import (
 type App struct {
 	App            fyne.App
 	MainWindow     fyne.Window
+	Clipboard      fyne.Clipboard
 	SelectedFolder models.Folder
 	ActiveContent  *fyne.Container
 	HomePage       *fyne.Container // folders-page
