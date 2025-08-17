@@ -6,6 +6,7 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"github.com/AlbertArakelyan/keep-command/constants"
 	"github.com/AlbertArakelyan/keep-command/db"
+	"github.com/AlbertArakelyan/keep-command/pages/command"
 	"github.com/AlbertArakelyan/keep-command/pages/commands"
 	editfolder "github.com/AlbertArakelyan/keep-command/pages/edit-folder"
 	"github.com/AlbertArakelyan/keep-command/pages/folders"
@@ -42,4 +43,5 @@ func registerPages() {
 	state.MyApp.CommandsPage = commands.CommandsPage
 	state.MyApp.NewCommandPage = newcommand.NewCommandPage()
 	state.MyApp.EditFolderPage = editfolder.EditFolderPage
+	state.MyApp.CommandPage = command.CommandPage
 }

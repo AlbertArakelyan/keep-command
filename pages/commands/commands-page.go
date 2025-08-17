@@ -31,7 +31,10 @@ func CommandsPage() *fyne.Container {
 
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
 	for _, command := range state.Commands {
-		openButton := widget.NewButtonWithIcon("Open", theme.FolderOpenIcon(), func() {})
+		openButton := widget.NewButtonWithIcon("Open", theme.FolderOpenIcon(), func() {
+			state.SelectedCommand = &command
+			myApp.SetActiveContent(state.MyApp.CommandPage())
+		})
 
 		copyButton := widget.NewButtonWithIcon("Copy", theme.ContentCopyIcon(), func() {
 			myApp.Clipboard.SetContent(command.CommandValue)
