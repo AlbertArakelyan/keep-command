@@ -21,3 +21,10 @@ type Command struct {
 func (command *Command) Create() error {
 	return sqlitedb.DB.Create(&command).Error
 }
+
+func GetCommands(folderId int) ([]Command, error) {
+	var commands []Command
+	err := sqlitedb.DB.Where("folder_id = ?", folderId).Order("created_at desc").Find(&commands).Error
+
+	return commands, err
+}
