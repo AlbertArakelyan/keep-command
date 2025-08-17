@@ -32,13 +32,13 @@ func NewFolderPage() *fyne.Container {
 	)
 
 	titleEntry := widget.NewEntry()
-	titleEntry.SetPlaceHolder("Folder Title")
+	titleEntry.SetPlaceHolder("Folder Title *")
 
 	descriptionEntry := widget.NewMultiLineEntry()
 	descriptionEntry.SetPlaceHolder("Folder Description")
 
 	tasgEntry := widget.NewEntry()
-	tasgEntry.SetPlaceHolder("Tags")
+	tasgEntry.SetPlaceHolder("Tags *")
 
 	saveFolderButton := widget.NewButton("💾 Save Folder", func() {
 		if titleEntry.Text == "" {
