@@ -54,10 +54,10 @@ func CommandsPage() *fyne.Container {
 
 		commandPreview := widget.NewRichTextFromMarkdown(fmt.Sprintf("```bash\n%s\n```\n", command.CommandValue))
 		borderedCommandPreview := container.NewBorder(
-			nil,
-			nil,
-			nil,
-			nil,
+			canvas.NewRectangle(color.Gray{Y: 64}),
+			canvas.NewRectangle(color.Gray{Y: 64}),
+			canvas.NewRectangle(color.Gray{Y: 64}),
+			canvas.NewRectangle(color.Gray{Y: 64}),
 			commandPreview,
 		)
 
@@ -65,7 +65,10 @@ func CommandsPage() *fyne.Container {
 			command.Name,
 			command.Description,
 			container.NewVBox(
-				borderedCommandPreview,
+				container.NewStack(
+					canvas.NewRectangle(color.Gray{}),
+					borderedCommandPreview,
+				),
 				container.NewGridWithColumns(2,
 					// widget.NewLabel("ID: "+strconv.Itoa(command.ID)),
 					// widget.NewLabel("Created: "+command.CreatedAt.Format(time.RFC822)),
