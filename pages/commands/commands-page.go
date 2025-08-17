@@ -33,6 +33,10 @@ func CommandsPage() *fyne.Container {
 	for _, command := range state.Commands {
 		openButton := widget.NewButtonWithIcon("Open", theme.FolderOpenIcon(), func() {})
 
+		copyButton := widget.NewButtonWithIcon("Copy", theme.ContentCopyIcon(), func() {
+			myApp.Clipboard.SetContent(command.CommandValue)
+		})
+
 		deleteButton := widget.NewButtonWithIcon("Delete", theme.DeleteIcon(), func() {
 			dialog.ShowConfirm(
 				"Delete Command",
@@ -79,11 +83,12 @@ func CommandsPage() *fyne.Container {
 					canvas.NewRectangle(color.Gray{}),
 					borderedCommandPreview,
 				),
-				container.NewGridWithColumns(2,
+				container.NewGridWithColumns(3,
 					// widget.NewLabel("ID: "+strconv.Itoa(command.ID)),
 					// widget.NewLabel("Created: "+command.CreatedAt.Format(time.RFC822)),
 					// widget.NewLabel("Updated: "+command.UpdatedAt.Format(time.RFC822)),
 					openButton,
+					copyButton,
 					deleteButton,
 				),
 			),

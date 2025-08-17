@@ -17,6 +17,7 @@ func main() {
 	state.MyApp.App = app.NewWithID("com.keepcommand.aa")
 	state.MyApp.MainWindow = state.MyApp.App.NewWindow("Keep Command")
 	state.MyApp.MainWindow.Resize(fyne.NewSize(constants.WinWidth, constants.WinHeight))
+	state.MyApp.Clipboard = state.MyApp.App.Clipboard()
 
 	db.InitDB()
 
