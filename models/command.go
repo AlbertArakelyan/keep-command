@@ -28,3 +28,7 @@ func GetCommands(folderId int) ([]Command, error) {
 
 	return commands, err
 }
+
+func DeleteCommand(id int) error {
+	return sqlitedb.DB.Where("id = ?", id).Delete(&Command{}).Error
+}
