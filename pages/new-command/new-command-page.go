@@ -19,7 +19,7 @@ func NewCommandPage() *fyne.Container {
 	createBarTitle.TextStyle = fyne.TextStyle{Bold: true}
 
 	backButton := widget.NewButton("⬅️ Back", func() {
-		state.MyApp.SetActiveContent(state.MyApp.HomePage)
+		state.MyApp.SetActiveContent(state.MyApp.CommandsPage())
 	})
 
 	createBar := container.NewHBox(
