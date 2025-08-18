@@ -20,7 +20,10 @@ func CommandPage() *fyne.Container {
 	title.TextSize = constants.PageTitleFontSize
 	title.TextStyle = fyne.TextStyle{Bold: true}
 
-	backButton := widget.NewButton("⬅️ Back", func() {})
+	backButton := widget.NewButton("⬅️ Back", func() {
+		state.SelectedCommand = nil
+		state.MyApp.SetActiveContent(state.MyApp.CommandsPage())
+	})
 
 	titleBar := container.NewHBox(
 		title,
@@ -42,7 +45,7 @@ func CommandPage() *fyne.Container {
 	})
 
 	detailsBar := container.NewVBox(
-		canvas.NewText(fmt.Sprintf("Title: %s", state.SelectedCommand.Name), nil), // TODO: style better, with separate title and value
+		canvas.NewText(fmt.Sprintf("Title: %s", state.SelectedCommand.Name), nil),              // TODO: style better, with separate title and value
 		canvas.NewText(fmt.Sprintf("Description: %s", state.SelectedCommand.Description), nil), // TODO: style better, with separate title and value
 		container.NewVBox(
 			canvas.NewText("Command:", nil),
