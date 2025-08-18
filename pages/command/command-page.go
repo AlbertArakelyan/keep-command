@@ -25,9 +25,15 @@ func CommandPage() *fyne.Container {
 		state.MyApp.SetActiveContent(state.MyApp.CommandsPage())
 	})
 
+	editButton := widget.NewButton("✏️ Edit", func() {
+		state.EditingCommand = state.SelectedCommand
+		state.MyApp.SetActiveContent(state.MyApp.EditCommandPage())
+	})
+
 	titleBar := container.NewHBox(
 		title,
 		layout.NewSpacer(),
+		editButton,
 		backButton,
 	)
 
