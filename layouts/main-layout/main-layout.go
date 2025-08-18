@@ -1,4 +1,4 @@
-package layouts
+package mainlayout
 
 import (
 	"fyne.io/fyne/v2"

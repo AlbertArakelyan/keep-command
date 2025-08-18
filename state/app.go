@@ -2,7 +2,7 @@ package state
 
 import (
 	"fyne.io/fyne/v2"
-	"github.com/AlbertArakelyan/keep-command/layouts"
+	mainlayout "github.com/AlbertArakelyan/keep-command/layouts/main-layout"
 	"github.com/AlbertArakelyan/keep-command/models"
 )
 
@@ -29,12 +29,12 @@ type AppPages struct {
 var MyApp App
 
 func (app *App) MakeUI() {
-	mainLayout := layouts.NewMainLayout(app.MainWindow)
+	mainLayout := mainlayout.NewMainLayout(app.MainWindow)
 
 	app.MainWindow.SetContent(mainLayout(app.ActiveContent))
 }
 
 func (app *App) SetActiveContent(page *fyne.Container) {
 	app.ActiveContent = page
-	app.MainWindow.SetContent(layouts.NewMainLayout(app.MainWindow)(app.ActiveContent))
+	app.MainWindow.SetContent(mainlayout.NewMainLayout(app.MainWindow)(app.ActiveContent))
 }
