@@ -4,7 +4,7 @@ BINARY_NAME_WINDOWS=Keep Command.exe
 APP_ID_WINDOWS=com.keepcommand.aa
 
 APP_NAME="Keep Command"
-VERSION=0.1.0
+VERSION=0.1.1
 BUILD_NO=1
 
 build-macos:
