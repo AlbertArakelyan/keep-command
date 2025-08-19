@@ -29,6 +29,13 @@ func GetCommands(folderId int) ([]Command, error) {
 	return commands, err
 }
 
+func GetCommandsBySearch(search string) ([]Command, error) {
+	var commands []Command
+	err := sqlitedb.DB.Where("name LIKE ? OR command_tags LIKE ? OR command_value LIKE ?", "%"+search+"%", "%"+search+"%", "%"+search+"%", "%"+search+"%").Order("created_at desc").Find(&commands).Error
+
+	return commands, err
+}
+
 func DeleteCommand(id int) error {
 	return sqlitedb.DB.Where("id = ?", id).Delete(&Command{}).Error
 }

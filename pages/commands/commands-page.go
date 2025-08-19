@@ -16,17 +16,21 @@ import (
 	"github.com/AlbertArakelyan/keep-command/state"
 )
 
+var searchValue string
+
 func CommandsPage() *fyne.Container {
 	myApp := state.MyApp
 
 	var err error = nil
 
-	state.Commands, err = models.GetCommands(state.SelectedFolder.ID)
-	if err != nil {
-		dialog.ShowError(
-			err,
-			myApp.MainWindow,
-		)
+	if searchValue == "" {
+		state.Commands, err = models.GetCommands(state.SelectedFolder.ID)
+		if err != nil {
+			dialog.ShowError(
+				err,
+				myApp.MainWindow,
+			)
+		}
 	}
 
 	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
@@ -118,6 +122,22 @@ func CommandsPage() *fyne.Container {
 		myApp.SetActiveContent(myApp.EditFolderPage())
 	})
 
+	searchBarEntry := widget.NewEntry()
+	searchBarEntry.SetPlaceHolder("Search commands (press Enter↵ for submitting)...")
+	searchBarEntry.SetText(searchValue)
+	searchBarEntry.OnSubmitted = func(s string) {
+		state.Commands, err = models.GetCommandsBySearch(s)
+		if err != nil {
+			dialog.ShowError(
+				err,
+				myApp.MainWindow,
+			)
+		}
+
+		searchValue = s
+		myApp.SetActiveContent(CommandsPage())
+	}
+
 	titleBar := container.NewHBox(
 		title,
 		layout.NewSpacer(),
@@ -132,6 +152,7 @@ func CommandsPage() *fyne.Container {
 	commandsPageContent := container.NewBorder(
 		container.NewVBox(
 			titleBar,
+			searchBarEntry,
 			canvas.NewLine(color.White),
 		),
 		newCommandButton,
