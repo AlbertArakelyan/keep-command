@@ -15,5 +15,6 @@ build-windows:
 	rm ${BINARY_NAME_WINDOWS}
 	fyne package -os windows -name ${BINARY_NAME_WINDOWS} -appID ${APP_ID_WINDOWS} -release
 
+# Make sure to do `npm install --global create-dmg`
 create-dmg:
 	create-dmg 'Keep Command.app'
