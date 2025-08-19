@@ -2,7 +2,7 @@
   <img src="./Icon.png" alt="Keep Command" width="100" height="100">
 </div>
 
-<h1 align="center">
+<h1 align="center" style="color: #00D578">
   Keep Command
 </h1>
 
