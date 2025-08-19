@@ -26,6 +26,13 @@ func GetFolders() ([]Folder, error) {
 	return folders, err
 }
 
+func GetFoldersBySearch(search string) ([]Folder, error) {
+	var folders []Folder
+	err := sqlitedb.DB.Distinct("folders.*").Joins("LEFT JOIN commands ON folders.id = commands.folder_id").Where("folders.name LIKE ? OR folders.folder_tags LIKE ? OR commands.name LIKE ? OR commands.command_tags LIKE ?", "%"+search+"%", "%"+search+"%", "%"+search+"%", "%"+search+"%").Order("folders.created_at desc").Find(&folders).Error
+
+	return folders, err
+}
+
 func DeleteFolder(id int) error {
 	return sqlitedb.DB.Where("id = ?", id).Delete(&Folder{}).Error
 }
