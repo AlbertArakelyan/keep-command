@@ -46,7 +46,7 @@ Download the app from [Releases section](https://github.com/AlbertArakelyan/keep
 ## Support
 
 Have any questions ❓ feel free to reach out me 🙂. <br>
-Soon we will have our community chat on **Discord**
+Soon we will have our community chat on **Discord**.
 
 ## Contributing
 
