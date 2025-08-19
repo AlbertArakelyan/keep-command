@@ -13,21 +13,26 @@ import (
 	state "github.com/AlbertArakelyan/keep-command/state"
 )
 
+var grid *fyne.Container
+var searchValue string
+
 func FoldersPage() *fyne.Container {
 	myApp := state.MyApp
 	mainWindow := myApp.MainWindow
 
 	var err error = nil
 
-	state.Folders, err = models.GetFolders()
-	if err != nil {
-		dialog.ShowError(
-			err,
-			mainWindow,
-		)
+	if searchValue == "" {
+		state.Folders, err = models.GetFolders()
+		if err != nil {
+			dialog.ShowError(
+				err,
+				mainWindow,
+			)
+		}
 	}
 
-	grid := container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
+	grid = container.NewAdaptiveGrid(3) // Adjust the number of columns as needed
 	for _, folder := range state.Folders {
 		openButton := widget.NewButtonWithIcon("Open", theme.FolderIcon(), func() {
 			state.SelectedFolder = &folder
@@ -86,8 +91,24 @@ func FoldersPage() *fyne.Container {
 	newFolderButton.Resize(fyne.NewSize(150, 30))
 	newFolderButton.Move(fyne.NewPos(mainWindow.Canvas().Size().Width-newFolderButton.MinSize().Width, mainWindow.Canvas().Size().Height-newFolderButton.MinSize().Height))
 
+	searchBarEntry := widget.NewEntry()
+	searchBarEntry.SetPlaceHolder("Search folders (press Enter↵ for submitting)...")
+	searchBarEntry.SetText(searchValue)
+	searchBarEntry.OnSubmitted = func(s string) {
+		state.Folders, err = models.GetFoldersBySearch(s)
+		if err != nil {
+			dialog.ShowError(
+				err,
+				mainWindow,
+			)
+		}
+
+		searchValue = s
+		myApp.SetActiveContent(FoldersPage())
+	}
+
 	foldersPageContent := container.NewBorder(
-		nil,
+		searchBarEntry,
 		newFolderButton,
 		nil,
 		nil,
