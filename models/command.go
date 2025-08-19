@@ -29,9 +29,9 @@ func GetCommands(folderId int) ([]Command, error) {
 	return commands, err
 }
 
-func GetCommandsBySearch(search string) ([]Command, error) {
+func GetCommandsBySearch(search string, folderId int) ([]Command, error) {
 	var commands []Command
-	err := sqlitedb.DB.Where("name LIKE ? OR command_tags LIKE ? OR command_value LIKE ?", "%"+search+"%", "%"+search+"%", "%"+search+"%", "%"+search+"%").Order("created_at desc").Find(&commands).Error
+	err := sqlitedb.DB.Where("folder_id = ?", folderId).Where("name LIKE ? OR command_tags LIKE ? OR command_value LIKE ?", "%"+search+"%", "%"+search+"%", "%"+search+"%", "%"+search+"%").Order("created_at desc").Find(&commands).Error
 
 	return commands, err
 }

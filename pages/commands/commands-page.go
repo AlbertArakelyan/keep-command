@@ -126,7 +126,7 @@ func CommandsPage() *fyne.Container {
 	searchBarEntry.SetPlaceHolder("Search commands (press Enter↵ for submitting)...")
 	searchBarEntry.SetText(searchValue)
 	searchBarEntry.OnSubmitted = func(s string) {
-		state.Commands, err = models.GetCommandsBySearch(s)
+		state.Commands, err = models.GetCommandsBySearch(s, state.SelectedFolder.ID)
 		if err != nil {
 			dialog.ShowError(
 				err,
