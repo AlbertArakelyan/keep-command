@@ -5,7 +5,7 @@ APP_ID_WINDOWS=com.keepcommand.aa
 
 APP_NAME="Keep Command"
 VERSION=0.1.1
-BUILD_NO=1
+BUILD_NO=2
 
 build-macos:
 	rm -rf ${BINARY_NAME_MACOS}
@@ -14,3 +14,6 @@ build-macos:
 build-windows:
 	rm ${BINARY_NAME_WINDOWS}
 	fyne package -os windows -name ${BINARY_NAME_WINDOWS} -appID ${APP_ID_WINDOWS} -release
+
+create-dmg:
+	create-dmg 'Keep Command.app'
