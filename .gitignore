@@ -35,3 +35,6 @@ go.work.sum
 sql.db*
 Keep Command.app
 Keep Command*.dmg
+
+# misc
+.DS_Store
