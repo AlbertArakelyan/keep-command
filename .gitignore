@@ -33,3 +33,5 @@ go.work.sum
 
 # Project related
 sql.db*
+Keep Command.app
+Keep Command*.dmg
