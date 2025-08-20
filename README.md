@@ -51,7 +51,7 @@ Soon we will have our community chat on **Discord**.
 ## Contributing
 
 - If you find a bug or have an idea for a new feature, please [open an issue](https://github.com/AlbertArakelyan/keep-command/issues).
-- If you want to contribute, feel free to [fork the repository](https://github.com/AlbertArakelyan/keep-command) and create a pull request.
+- If you want to contribute, feel free to [fork the repository](https://github.com/AlbertArakelyan/keep-command/fork) and create a pull request.
 
 ## License
 
